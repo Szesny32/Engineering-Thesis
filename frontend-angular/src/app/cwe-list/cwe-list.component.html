@@ -1,0 +1,13 @@
+<table>
+    <tr>
+        <th>CVE</th>
+        <th>Name</th>
+        <th>Description</th>
+    </tr>
+        <tr *ngFor="let CWE of CWEs | async">
+                <th><a routerLink="/cwe/{{CWE.id}}">{{CWE.id }} </a></th>
+                 <th>{{CWE.name }} </th>   
+            
+            <th>{{CWE.description}}</th>
+        </tr>
+</table>

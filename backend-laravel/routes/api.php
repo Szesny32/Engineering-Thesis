@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CWEController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,9 +17,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::post('/register', [AuthController::class, 'register']);
+Route::get('/cwe-list', [CWEController::class, 'index']);
+Route::get('cwe22',[CWEController::class, 'cwe22']);
 
-
-//TEST
+//TES
 Route::get('/users', [AuthController::class, 'test_index']);
 
 
