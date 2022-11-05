@@ -1,4 +1,49 @@
-<p>cwe22 works!</p>
-{{text}}
+<br>
+<div class="dialog">
+Zapewne domyślasz się, że manipując parametrem możesz uzyskać dostęp do innego pliku.
+Jeżeli są to tylko pliki umieszczone w publicznym katalogu to jeszcze nie jest tak źle.
+CWE-22 to przypadek pozwalający uzyskać dostęp niemal do każdego katalogu i pliku. 
+Wszystko dzięki dodaniu ciągów <b>"../"</b> - które umożliwiają wyjść poza aktualny katalog.
+</div>
 
-<button type="button" (click)="downloadFile('user-manual.txt')">Download</button>
+
+<br>
+Po pobraniu pliku:
+<button type="button" (click)="downloadFile('user-manual')">user-manual</button>
+w liście pobranych plików zobaczysz coś takiego:<br>
+<div class="image"><img [src]="images[1]" [alt]="alttext[1]"></div>
+<br>
+<br>
+Pewnie zauważyłeś, że <b>filename</b> jest parametrem przyjmującym nazwę pobieranego pliku. Parametr można podmienieć na dowolny<br>
+Przyjrzyjmy się, jak wygląda to po stronie serwera:<br>
+<br>
+return response()->download(storage_path('public-data/'.$request->filename));<br>
+<br><br>
+W normalnym działaniu będzie wyglądać to tak:<br>
+<br>
+return response()->download(storage_path('public-data/user-manual));<br>
+<br><br>
+Jednakże, programista nie może ufać niczemu co pochodzi od użytkownika.
+Załóżmy, że pliki na serwerze mają taką strukturę:<br>
+<div class="image">
+    <img [src]="images[0]" [alt]="alttext[0]"> 
+</div>
+<br><br> 
+Jeżeli podmienisz wartość parametru <b>filename</b> na "../etc/passwd" uzyskasz dostęp do pliku znajdującego się w innym katalogu.  
+<br>
+{{ROOT_URL}}<input id="filename" [(ngModel)]="filename" placeholder="user-manual">
+<button type="button" (click)="downloadFile(filename)">Pobierz</button>
+
+<br>
+<br><br>
+Stało się tak, ponieważ programista nie zabezpieczył parametru:
+<br><br>
+return response()->download(storage_path('public-data/../etc/passwd));<br>
+<br>
+
+<br><br>
+    Można było się przed tym zabezpieczyć. Zawsze należy sanityzować dane i sprawdzić czy to co użytkownik wysłał jest tym czego oczekujemy:
+    <br><br>
+    $filename = $request->filename;<br>
+    if($filename=="user-manual")<br>
+         return response()->download(storage_path('public-data/user-manual.txt'));

@@ -1,0 +1,1 @@
+Username:Password:UID:GID:GECOS:Home directory:Login shell

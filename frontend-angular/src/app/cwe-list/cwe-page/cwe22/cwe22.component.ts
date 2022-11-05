@@ -9,17 +9,23 @@ import { HttpClient, HttpParams, HttpHeaders, HttpRequest } from '@angular/commo
 export class Cwe22Component implements OnInit {
 
   constructor(private http: HttpClient) { }
-  readonly ROOT_URL = 'http://localhost:8000/api';
-  text: string;
+  readonly ROOT_URL = 'http://localhost:8000/api/cwe22/?filename=';
+  filename: string = "user-manual";
+
+  images: string[] = [
+    "/assets/images/1.png",
+    "/assets/images/2.png",
+  ];
+  alttext: string[] = [
+    "Missing 1.png",
+    "Missing 2.png",
+  ];
+
   ngOnInit(): void {
   }
-    getFile(): void{
-      this.http.get(this.ROOT_URL + '/cwe22/?filename=../secret.txt', { responseType: 'text' as 'json'}).subscribe(data => {
-        this.text = data.toString();   
-    })
+
+  downloadFile(filename: string): void {
+    window.open(this.ROOT_URL + filename);
   }
-    downloadFile(filename: string): void{
-      window.open(this.ROOT_URL+'/cwe22/?filename='+filename);
-    }
-  
+
 }

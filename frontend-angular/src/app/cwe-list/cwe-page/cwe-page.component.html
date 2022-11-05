@@ -1,7 +1,6 @@
-<p>cwe-page works!</p>
-CWE-{{id}}
-
-
+<div class="header">
+    <h1>CWE-{{id}}</h1>
+</div>
 <div [ngSwitch]="id">
     <div *ngSwitchCase="22"><app-cwe22></app-cwe22></div>
     <div *ngSwitchDefault>Nie ma takiego</div>
