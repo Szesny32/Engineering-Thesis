@@ -1,22 +1,116 @@
+.header {
+    background-color: rgb(32, 33, 36);
+    padding: 15px;
+    box-shadow: 0px 0px 15px black;
+    text-align: center;
+}
 
-.header{
-    background-color: rgb(32,33,36);
-    padding: 15px;
-    box-shadow: 0px 0px 15px black;
-    text-align: center;
+.assistantPanel {
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+    width: 1600px;
+    height: 254px;
+    border: none;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-collapse: collapse;
+
+    .rightPanel {
+        float: left;
+        display: table-column;
+        width: 400px;
+        height: 250px;
+        border: solid 2px rgb(240, 15, 240);
+        background-color: rgb(22, 22, 22);
+        box-shadow: 0px 0px 15px rgb(240, 15, 240);
+
+
+        .assistant {
+            width: 400px;
+            height: 200px;
+        }
+
+        img {
+            width: 400px;
+            height: 200px;
+        }
+
+        .menu {
+            border-top: solid 2px black;
+            border-bottom: none;
+            width: 400px;
+            height: 48px;
+            background-color: rgb(32, 33, 36);
+            align-items: center;
+            display: inline-block;
+
+            .circle {
+                margin-top: 10px;
+                margin-left: 7.5px;
+                width: 25px;
+                height: 25px;
+                border-radius: 25px;
+                background-color: rgb(22, 22, 22);
+                border: dashed  2.5px rgb(240, 15, 240);
+            }
+
+            .circle:hover {
+                border: solid 2.5px rgb(240, 15, 240);
+                //background-color: rgb(240, 15, 240);
+            }
+
+            .circleSet {
+                margin-top: 10px;
+                margin-left: 7.5px;
+                width: 25px;
+                height: 25px;
+                border-radius: 25px;
+                //background-color: rgb(22, 22, 22);
+                border: solid 2.5px rgb(22, 22, 22);
+                background-color: rgb(240, 15, 240);
+            }
+
+        }
+    }
+
+    .dialog {
+        width: 1174px;
+        height: 234px;
+        float: left;
+        display: table-column;
+        padding: 10px;
+        border: solid 2px black;
+        border-right: none;
+        background-color: rgb(32, 33, 36);
+        overflow-y: scroll;
+        box-shadow: 0px 0px 15px black;
+        color: white;
+        text-align: center;
+        font-family: 'Courier New', Courier, monospace;
+
+        .pp {
+            color: rgb(240, 15, 240);
+            display: inline-block;
+            font-weight: bolder;
+        }
+    }
 }
-.dialog{
-    border-radius: 25px;
-    background-color: rgb(43, 78, 184);
-    padding: 15px;
-    box-shadow: 0px 0px 15px black;
-}
-.image{
-   
+
+.image {
     border-radius: 25px;
     text-align: center;
-    background-color: rgb(32,33,36);
+    background-color: rgb(32, 33, 36);
     display: inline-block;
     padding: 7px;
     box-shadow: 0px 0px 15px black;
+}
+
+.code {
+    border-radius: 25px;
+    background-color: rgb(32, 33, 36);
+    display: inline-block;
+    padding: 10px;
+    box-shadow: 0px 0px 15px black;
+    color: rgb(94, 157, 209);
 }
