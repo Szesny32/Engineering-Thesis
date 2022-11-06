@@ -8,9 +8,15 @@
 
 <div class="assistantPanel">
     <div class="dialog">
-        <div class="text" [innerHTML]="dialogs[selectedLevel].dialog"></div>
-        <div class="image" *ngIf="dialogs[selectedLevel].image!=null"><img [src]="dialogs[selectedLevel].image"></div>
-
+        <div *ngFor="let dialog of levels[selectedLevel].dialogs">
+            <div *ngIf="dialog.type==1" class="text" [innerHTML]="dialog.dialog"></div>
+            <div *ngIf="dialog.type==2" class="image"><img [src]="dialog.dialog"></div>
+        </div>
+        <!-- <div class="image" *ngIf="dialogs[selectedLevel].image!=null"><img [src]="dialogs[selectedLevel].image"></div> -->
+        <div>
+            <button class="next" type="button" *ngIf="selectedLevel+1 < levels.length"
+                (click)="setDialog(selectedLevel+1)">Dalej</button>
+        </div>
     </div>
 
 
@@ -20,27 +26,26 @@
             <img src="/assets/images/assistant.png">
         </div>
         <div class="menu">
-            <button *ngFor="let dialog of dialogs; let index=index"
+            <button *ngFor="let level of levels; let index=index"
                 [ngClass]="index==selectedLevel? 'circleSet' : 'circle'" (click)="setDialog(index)"></button>
         </div>
     </div>
 </div>
 
-<button type="button" (click)="setDialog((selectedLevel+1) >= dialogs.length ? selectedLevel : selectedLevel+1)">Dalej</button>
-
-<br><br><br><br>
-<br><br><br><br>
 
 
-
-
-
-
-<button type="button" (click)="downloadFile('user-manual')">user-manual</button>
 <br><br>
-<div class="code">
-    {{ROOT_URL}}<input id="filename" [(ngModel)]="filename" placeholder="user-manual">
-</div>
-<button type="button" (click)="downloadFile(filename)">Pobierz</button>
 
+
+<div class="mainPanel">
+    <div *ngIf="selectedLevel==1">
+        user-manual <button type="button" (click)="downloadFile('user-manual')">Pobierz</button>
+    </div>
+    <div *ngIf="selectedLevel==2">
+        <div class="code">
+            {{ROOT_URL}}<input id="filename" [(ngModel)]="filename" placeholder="user-manual">
+        </div>
+        <button type="button" (click)="downloadFile(filename)">Pobierz</button>
+    </div>
+</div>
 
