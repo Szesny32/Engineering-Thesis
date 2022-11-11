@@ -1,7 +1,10 @@
 <div class="header">
-    <h1>CWE-{{id}}</h1>
+    CWE-{{selectCWE.id}}
 </div>
-<div [ngSwitch]="id">
+
+
+
+<div [ngSwitch]="selectCWE.id">
     <div *ngSwitchCase="22"><app-cwe22></app-cwe22></div>
     <div *ngSwitchDefault>Nie ma takiego</div>
 </div>

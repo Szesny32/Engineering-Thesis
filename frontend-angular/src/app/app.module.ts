@@ -9,6 +9,7 @@ import { HttpClientModule} from '@angular/common/http';
 import { CweListComponent } from './cwe-list/cwe-list.component';
 import { CwePageComponent } from './cwe-list/cwe-page/cwe-page.component';
 import { Cwe22Component } from './cwe-list/cwe-page/cwe22/cwe22.component';
+import { SideNavComponent } from './side-nav/side-nav.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { Cwe22Component } from './cwe-list/cwe-page/cwe22/cwe22.component';
     TestComponent,
     CweListComponent,
     CwePageComponent,
-    Cwe22Component
+    Cwe22Component,
+    SideNavComponent
   ],
   imports: [
     BrowserModule,

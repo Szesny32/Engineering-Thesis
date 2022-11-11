@@ -5,8 +5,8 @@
     </tr>
 </table> -->
 
-
 <div class="assistantPanel">
+  
     <div class="dialog">
         <div *ngFor="let dialog of levels[selectedLevel].dialogs">
             <div *ngIf="dialog.type==1" class="text" [innerHTML]="dialog.dialog"></div>

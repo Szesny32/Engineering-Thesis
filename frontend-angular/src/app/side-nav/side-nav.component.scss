@@ -1,0 +1,33 @@
+#side-nav {
+    float: left;
+    width: 500px;
+    height: 100%;
+    overflow-y: scroll;
+
+    .side-nav-button {
+        background-color: rgb(32, 33, 36);
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 15px;
+        color: white;
+        border: 2px solid rgb(32, 33, 36);
+        padding-top: 10px;
+        padding-bottom: 10px;
+
+    }
+
+    .side-nav-button:hover {
+        background-color: rgb(42, 43, 46);
+    }
+
+    .selected-side-nav-button {
+        background-color: rgb(32, 33, 36);
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 15px;
+        color: white;
+        border: 2px solid white;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+
+}
