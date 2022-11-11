@@ -1,5 +1,5 @@
 <div id="side-nav">
-    <button *ngFor="let CWE of CWEs; let index=index" [ngClass]="index==selectedCWE.id? 'selected-side-nav-button' : 'side-nav-button'" (click)="selectCWE(CWE)">
+    <button *ngFor="let CWE of CWEs" [ngClass]="CWE.id==selectedCWE.id? 'selected-side-nav-button' : 'side-nav-button'" (click)="selectCWE(CWE)">
         CWE-{{CWE.id}} {{CWE.name}} 
     </button>
 </div>

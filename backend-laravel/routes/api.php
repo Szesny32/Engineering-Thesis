@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 Route::post('/register', [AuthController::class, 'register']);
 Route::get('/cwe-list', [CWEController::class, 'index']);
 Route::get('cwe22',[CWEController::class, 'cwe22']);
+Route::get('cwe89',[CWEController::class, 'cwe89']);
 
 //TES
 Route::get('/users', [AuthController::class, 'test_index']);
