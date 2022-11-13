@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CweListComponent } from './cwe-list.component';
+import { Cwe89Component } from './cwe89.component';
 
-describe('CweListComponent', () => {
-  let component: CweListComponent;
-  let fixture: ComponentFixture<CweListComponent>;
+describe('Cwe89Component', () => {
+  let component: Cwe89Component;
+  let fixture: ComponentFixture<Cwe89Component>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CweListComponent ]
+      declarations: [ Cwe89Component ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(CweListComponent);
+    fixture = TestBed.createComponent(Cwe89Component);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

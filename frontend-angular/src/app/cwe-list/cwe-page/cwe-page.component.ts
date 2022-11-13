@@ -14,12 +14,8 @@ export class CwePageComponent implements OnInit {
   id:Number; 
   @Input()   selectCWE: CWE;
   ngOnInit(): void {
-    this.getActiveCWE();
-   // this.id = Number(this.route.snapshot.paramMap.get('id'));
+
   }
 
-  getActiveCWE(): void{
-    this.service.getSelectedCWE().subscribe(id => this.id = id);
-  }
 
 }

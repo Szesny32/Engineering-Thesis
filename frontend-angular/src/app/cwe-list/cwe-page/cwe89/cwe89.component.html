@@ -1,0 +1,21 @@
+{{login}} {{password}}
+<div>
+    <label for="login">Login: </label>
+    <input id="login" [(ngModel)]="login" placeholder="login">
+</div>
+<div>
+    <label for="password">Password: </label>
+    <input type="password" id="password" [(ngModel)]="password" placeholder="password">
+</div>
+
+<button (click)="signIn()">Login</button>
+
+<div *ngIf="user!=null">
+    {{user.id}}
+    {{user.name}}
+    {{user.email}}
+    {{user.email_verified_at}}
+   {{user.created_at}}
+    {{user.updated_at}}
+  
+</div>

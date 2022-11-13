@@ -1,26 +1,41 @@
 import { Injectable } from '@angular/core';
 import { CWE } from './data-models/cwe';
-import { Observable, of} from 'rxjs';
-import { HttpClient} from '@angular/common/http';
+import { Observable, of } from 'rxjs';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { User } from './cwe-list/cwe-page/cwe89/cwe89.component';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CWEService {
 
-  constructor( private http: HttpClient) { }
+  constructor(private http: HttpClient) { }
   readonly ROOT_URL = 'http://localhost:8000/api';
   selectedCWE: number = 0;
-  getList(): Observable<CWE[]>{
+  getList(): Observable<CWE[]> {
 
     return this.http.get<CWE[]>(this.ROOT_URL + '/cwe-list');
   }
-  getSelectedCWE(): Observable<number>{
-    const x  = of(this.selectedCWE);
+  getSelectedCWE(): Observable<number> {
+    const x = of(this.selectedCWE);
     return x;
   }
-  setCWE(id: number): void{
+  setCWE(id: number): void {
     this.selectedCWE = id;
   }
+
+  signIn(login: string, password: string) {
+    let params = new HttpParams();
+    params = params.append('login', login);
+    params = params.append('password', password);
+
+    const requestOptions = { params: params };
+
+//console.log(this.http.get<User>(this.ROOT_URL + '/cwe89', requestOptions));
+
+    return this.http.get<User>(this.ROOT_URL + '/cwe89', requestOptions);
+     
+  }
+
 }
 
