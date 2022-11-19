@@ -1,4 +1,4 @@
-import { ThisReceiver } from '@angular/compiler';
+import { IfStmt, ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { CWEService } from 'src/app/cwe.service';
 
@@ -10,20 +10,46 @@ import { CWEService } from 'src/app/cwe.service';
 export class Cwe89Component implements OnInit {
 
   constructor(private service: CWEService) { }
-  readonly ROOT_URL = 'http://localhost:8000/api/cwe89';
+
   login: string = "";
   password: string = "";
   user: User;
+
+
   ngOnInit(): void {
   }
-
-  signIn(): void{
-    this.service.signIn(this.login, this.password) 
-    .subscribe((user: User) => {
-      console.log(user);
-      this.user = user;
-    });
+  selectedLevel: number = 0;
+  setDialog(id: number): void{
+    this.selectedLevel = id;
   }
+  signIn(secure:Boolean): void{
+    if(secure){
+      this.service.signIn_s(this.login, this.password) 
+      .subscribe((user: User) => {
+        console.log(user);
+        this.user = user;
+        if(this.password == "'OR 1=1;-- "){
+          this.selectedLevel = 4;
+        }
+      });
+    }
+    else{
+      this.service.signIn_p(this.login, this.password) 
+      .subscribe((user: User) => {
+        console.log(user);
+        this.user = user;
+      });
+      if(this.password == "'OR 1=1;-- "){
+        this.selectedLevel = 2;
+      }
+
+    }
+
+
+
+  
+  }
+
 
 }
 

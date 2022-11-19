@@ -1,21 +1,67 @@
-{{login}} {{password}}
-<div>
-    <label for="login">Login: </label>
-    <input id="login" [(ngModel)]="login" placeholder="login">
-</div>
-<div>
-    <label for="password">Password: </label>
-    <input type="password" id="password" [(ngModel)]="password" placeholder="password">
+A03:2021-Injection
+<div class="assistantPanel">
+    <div class="dialog">
+        <!---->
+        <div *ngIf="selectedLevel==0">
+            <div class="text">...</div>
+        </div>
+        <!---->
+        <div *ngIf="selectedLevel==1">
+            <div class="text">Zaloguj się, wpisując w polu hasła <div class="code">'OR 1=1;-- </div> (na końcu jest spacja). W polu login możesz wpisać cokolwiek</div>
+        </div>
+        <!---->
+        <div *ngIf="selectedLevel==2">
+            <div class="text">Jak widzisz...</div>
+        </div>
+         <!---->
+         <div *ngIf="selectedLevel==3">
+            <div class="text">Można temu zaradzić</div>
+        </div>
+        <div *ngIf="selectedLevel==4">
+            <div class="text">...</div>
+        </div>
+    </div>
+    <!---->
+    <div class="rightPanel">
+        <div class="assistant">
+            <img src="/assets/images/assistant.png">
+        </div>
+        <div class="menu">
+            <button *ngFor="let number of [0,1,2,3,4]; let i = index"
+                [ngClass]="i==selectedLevel? 'circleSet' : 'circle'" (click)="setDialog(i)"></button>
+        </div>
+    </div>
 </div>
 
-<button (click)="signIn()">Login</button>
+<div *ngIf="selectedLevel==1">
+    <div>
+        <label for="login">Login: </label>
+        <input id="login" [(ngModel)]="login" placeholder="login">
+    </div>
+    <div>
+        <label for="password">Password: </label>
+        <input type="password" id="password" [(ngModel)]="password" placeholder="password">
+    </div>
+    
+    <button (click)="signIn(false)">Login</button>
 
-<div *ngIf="user!=null">
-    {{user.id}}
-    {{user.name}}
-    {{user.email}}
-    {{user.email_verified_at}}
-   {{user.created_at}}
-    {{user.updated_at}}
-  
+</div>
+<div *ngIf="selectedLevel==2">
+    <div *ngIf="user!=null">Witaj {{user.name}}! | {{user.email}}</div>
+</div>
+
+<div *ngIf="selectedLevel==3">
+    <div>
+        <label for="login">Login: </label>
+        <input id="login" [(ngModel)]="login" placeholder="login">
+    </div>
+    <div>
+        <label for="password">Password: </label>
+        <input type="password" id="password" [(ngModel)]="password" placeholder="password">
+    </div>
+    <button (click)="signIn(true)">Login</button> 
+</div>
+<div *ngIf="selectedLevel==4">
+    <div *ngIf="user==null">Błąd logowania</div>
+    <div *ngIf="user!=null">Witaj {{user.name}}! | {{user.email}}</div>
 </div>

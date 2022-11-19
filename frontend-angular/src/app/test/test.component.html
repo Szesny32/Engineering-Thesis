@@ -1,19 +1,4 @@
-Users:
-<table>
-    <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>E-mail</th>
-        <th>E-mail verified at</th>
-        <th>Created at</th>
-        <th>Updated at</th>
-    </tr>
-        <tr *ngFor="let user of users | async">
-            <td>{{user.id | json}}</td>
-            <td>{{user.name | json}}</td>
-            <td>{{user.email | json}}</td>
-            <td>{{user.email_verified_at | json}}</td>
-            <td>{{user.created_at | json}}</td>
-            <td>{{user.updated_at | json}}</td>
-        </tr>
-</table>
+
+user id = 32<br>
+<button (click)="getSessionID()">{{sessionID}}</button>
+<button (click)="getSessionID_2()">{{sessionID2}}</button>

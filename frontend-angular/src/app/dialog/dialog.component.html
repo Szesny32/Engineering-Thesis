@@ -1,0 +1,26 @@
+<div class="assistantPanel">
+  
+    <div class="dialog">
+        <div *ngFor="let dialog of levels[selectedLevel].dialogs">
+            <div *ngIf="dialog.type==1" class="text" [innerHTML]="dialog.dialog"></div>
+            <div *ngIf="dialog.type==2" class="image"><img [src]="dialog.dialog"></div>
+        </div>
+        <!-- <div class="image" *ngIf="dialogs[selectedLevel].image!=null"><img [src]="dialogs[selectedLevel].image"></div> -->
+        <div>
+            <button class="next" type="button" *ngIf="selectedLevel+1 < levels.length"
+                (click)="setDialog(selectedLevel+1)">Dalej</button>
+        </div>
+    </div>
+
+
+
+    <div class="rightPanel">
+        <div class="assistant">
+            <img src="/assets/images/assistant.png">
+        </div>
+        <div class="menu">
+            <button *ngFor="let level of levels; let index=index"
+                [ngClass]="index==selectedLevel? 'circleSet' : 'circle'" (click)="setDialog(index)"></button>
+        </div>
+    </div>
+</div>

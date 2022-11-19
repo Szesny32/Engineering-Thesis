@@ -24,17 +24,50 @@ class CWEController extends Controller
 
     }
 
-    public function cwe89(Request $request){
+    public function cwe89_problem(Request $request){
         $fields = $request->validate([
             'login'=> 'required|string',
             'password' => 'required|string',
         ]);
         
-        $user = User::whereRaw("name='".$fields['login']."'")
-        ->whereRaw("password='".$fields['password']."'")
-   ;
-        
-        return $user->first();
-
+        if($fields['password']=="'OR 1=1;-- "){
+            $user = User::whereRaw("name='".$fields['login']."'")
+            ->whereRaw("password='".$fields['password']."'");
+            
+            return $user->first();
+        }
+       return ['Bad Request'];
     }
+    public function cwe89_solution(Request $request){
+        $fields = $request->validate([
+            'login'=> 'required|string',
+            'password' => 'required|string',
+        ]);
+        
+        $user = User::where("name", "=", $fields['login'])
+        ->where("password", "=",$fields['password']);
+            
+        return $user->first();
+        
+    }
+
+
+    public function cwe331(Request $request){
+        $fields = $request->validate([
+            'userID' => 'required|numeric',
+        ]);
+        srand($fields['userID']);
+        return [rand()];
+        
+    }
+
+    public function cwe331_2(){
+        session()->regenerate();
+        return [session()->getId()];
+        
+    }
+
+  
+
+
 }

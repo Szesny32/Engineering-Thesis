@@ -24,18 +24,24 @@ export class CWEService {
     this.selectedCWE = id;
   }
 
-  signIn(login: string, password: string) {
+  signIn_p(login: string, password: string) {
     let params = new HttpParams();
     params = params.append('login', login);
     params = params.append('password', password);
 
     const requestOptions = { params: params };
-
-//console.log(this.http.get<User>(this.ROOT_URL + '/cwe89', requestOptions));
-
-    return this.http.get<User>(this.ROOT_URL + '/cwe89', requestOptions);
-     
+    return this.http.get<User>(this.ROOT_URL + '/cwe89_problem', requestOptions);
   }
+  signIn_s(login: string, password: string) {
+    let params = new HttpParams();
+    params = params.append('login', login);
+    params = params.append('password', password);
+
+    const requestOptions = { params: params };
+    return this.http.get<User>(this.ROOT_URL + '/cwe89_solution', requestOptions);
+  }
+
+
 
 }
 
