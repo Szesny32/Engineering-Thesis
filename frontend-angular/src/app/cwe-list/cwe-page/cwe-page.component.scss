@@ -26,19 +26,22 @@
         
         width: 400px;
         height: 250px;
-        border: solid 2px rgb(240, 15, 240);
+        border: solid 2px rgb(66, 141, 255);
         background-color: rgb(22, 22, 22);
-        box-shadow: 0px 0px 15px rgb(240, 15, 240);
+        box-shadow: 0px 0px 15px rgb(66, 141, 255);
 
 
         .assistant {
             width: 400px;
-            height: 200px;
+            width: 400px;
         }
 
         img {
-            width: 400px;
-            height: 200px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 400px;
+            max-height: 200px;
         }
 
         .menu {
@@ -57,11 +60,11 @@
                 height: 25px;
                 border-radius: 25px;
                 background-color: rgb(22, 22, 22);
-                border: dashed  2.5px rgb(240, 15, 240);
+                border: dashed  2.5px rgb(66, 141, 255);
             }
 
             .circle:hover {
-                border: solid 2.5px rgb(240, 15, 240);
+                border: solid 2.5px rgb(66, 141, 255);
                 //background-color: rgb(240, 15, 240);
             }
 
@@ -73,7 +76,7 @@
                 border-radius: 25px;
                 //background-color: rgb(22, 22, 22);
                 border: solid 2.5px rgb(22, 22, 22);
-                background-color: rgb(240, 15, 240);
+                background-color: rgb(66, 141, 255);
             }
 
         }
@@ -95,7 +98,7 @@
         font-family: 'Courier New', Courier, monospace;
 
         .pp {
-            color: rgb(240, 15, 240);
+            color: rgb(66, 141, 255);
             display: inline-block;
             font-weight: bolder;
         }
@@ -112,7 +115,7 @@
             height: 60px;
             font-size: 35px;
             border: none;
-            box-shadow: 0px 0px 15px rgb(240, 15, 240);
+            box-shadow: 0px 0px 15px rgb(66, 141, 255);
         }
 
         .next:hover{

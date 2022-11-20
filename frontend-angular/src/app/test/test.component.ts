@@ -11,35 +11,28 @@ export class TestComponent implements OnInit {
 
   constructor(private http: HttpClient) { }
   readonly ROOT_URL = 'http://localhost:8000/api';
-  sessionID: number;
-  sessionID2: string;
+
   ngOnInit(): void {
-    this.getSessionID();
-    this.getSessionID_2();
+   
+  }
+
+  setCookie() {
+    return this.http.get(this.ROOT_URL + '/cwe614');
   }
 
 
-  getSessionID(){
-//Because the seed for the PRNG is always the user's ID, the session ID will always be the same. An attacker could thus predict any user's session ID and potentially hijack the session.
-    let params = new HttpParams();
-    params = params.append('userID', 32);
-    const requestOptions = { params: params };
-    this.http.get<number>(this.ROOT_URL + '/cwe331',requestOptions)
-    .subscribe((sessionID: number) => {
-      console.log(sessionID);
-      this.sessionID = sessionID;
-  });
-  }
 
-  getSessionID_2(){
-    //Because the seed for the PRNG is always the user's ID, the session ID will always be the same. An attacker could thus predict any user's session ID and potentially hijack the session.
-        this.http.get<string>(this.ROOT_URL + '/cwe331_2')
-        .subscribe((sessionID: string) => {
-          console.log(sessionID);
-          this.sessionID2 = sessionID;
-      });
+  username:string = 'Template <script>alert("0wned")</script> <b>Syntax</b>'
+getMe(){
+  return this.http.get(this.ROOT_URL + '/test');
+
+}
+
+//CWE-79 Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')
+//CWE-352: Cross-Site Request Forgery (CSRF)
+//
 
 
 }
 
-}
+

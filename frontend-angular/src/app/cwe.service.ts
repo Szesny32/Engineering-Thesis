@@ -42,6 +42,23 @@ export class CWEService {
   }
 
 
+  getSessionID(userID: number) {
+    //Because the seed for the PRNG is always the user's ID, the session ID will always be the same. An attacker could thus predict any user's session ID and potentially hijack the session.
+    let params = new HttpParams();
+    params = params.append('userID', userID);
+    const requestOptions = { params: params };
+    return this.http.get<number>(this.ROOT_URL + '/cwe331', requestOptions);
+  }
+
+  getSessionID_2() {
+    return this.http.get<string>(this.ROOT_URL + '/cwe331_2');
+  }
+
+
+  CWE209(){
+    return this.http.get<string>(this.ROOT_URL+'/cwe_209');
+  }
+
 
 }
 

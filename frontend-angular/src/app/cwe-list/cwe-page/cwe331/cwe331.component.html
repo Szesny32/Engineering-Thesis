@@ -1,0 +1,13 @@
+Generowanie identyfikatora sesji na podstawie ID użytkownika nie jest najlepszym pomysłem. <br>
+user id = 
+<input id="userID" type="number" [(ngModel)]="userID" placeholder="32">
+
+<br>
+<button (click)="getSessionID()">Generuj</button><br>
+<div *ngIf="sessionID!=null">Wygenerowany: {{sessionID}}</div>
+<br><br>
+
+Najlepiej używaj wbudowanych funkcji ...
+<br>
+<button (click)="getSessionID_2()">Generuj</button><br>
+<div *ngIf="sessionID2!=null">Wygenerowany: {{sessionID2}}</div>
