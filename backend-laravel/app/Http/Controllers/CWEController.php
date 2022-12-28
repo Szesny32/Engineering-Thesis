@@ -94,6 +94,25 @@ class CWEController extends Controller
         return [0];
     }
 
+    public function xxx(){
+        $host = "127.0.0.1";
+        $user = "root";
+        $password = "BCtJ?TkF8gRCxQsY";
+        $db = "database";
+
+        //$driver = new \mysqli_driver();
+        //$driver->report_mode = MYSQLI_REPORT_STRICT | MYSQLI_REPORT_ERROR;
+        mysqli_report(MYSQLI_REPORT_STRICT | MYSQLI_REPORT_ALL);
+        try {
+            $connection = @new \mysqli($host, $user, $password, $db);
+        }
+        catch (\Exception $e) {
+           
+            return  $e->getTrace()[0];
+        }
+    }
+
+
     public function CWE614(){
         $minutes = 1;
         $response = new Response('Set Cookie');

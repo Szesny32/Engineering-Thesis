@@ -1,10 +1,10 @@
 <div class="mheader">
-    CWE-{{selectCWE.id}}
+    A{{selectedVulnerability.id}}: {{selectedVulnerability.category}}
 </div>
 
 
 
-<div [ngSwitch]="selectCWE.id">
+<div [ngSwitch]="selectedVulnerability.id">
     <div *ngSwitchCase="22"><app-cwe22></app-cwe22></div>
     <div *ngSwitchCase="89"><app-cwe89></app-cwe89></div>
     <div *ngSwitchCase="331"><app-cwe331></app-cwe331></div>

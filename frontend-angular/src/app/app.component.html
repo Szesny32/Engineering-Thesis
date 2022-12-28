@@ -1,5 +1,5 @@
 
-<app-side-nav (eselectedCWE)="selectCWE($event)"></app-side-nav>
-<app-cwe-page [selectCWE]="cwe"></app-cwe-page>
+<app-side-nav (emiter)="selectVulnerability($event)"></app-side-nav>
+<app-cwe-page [selectedVulnerability]="vulnerability"></app-cwe-page>
 
 <router-outlet></router-outlet>

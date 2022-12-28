@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CWEController;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,6 +17,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+
+Route::get('/vulnerabilities', [Controller::class, 'index']);
+
+
+
 Route::post('/register', [AuthController::class, 'register']);
 Route::get('/cwe-list', [CWEController::class, 'index']);
 Route::get('cwe22',[CWEController::class, 'cwe22']);
@@ -28,7 +35,7 @@ Route::get('cwe614',[CWEController::class,'CWE614']);
 Route::get('test',[CWEController::class,'test']);
 //TES
 Route::get('/users', [AuthController::class, 'test_index']);
-
+Route::get('/xxx', [CWEController::class, 'xxx']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

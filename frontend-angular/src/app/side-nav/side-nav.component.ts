@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { CWE } from '../data-models/cwe';
-import { CWEService } from '../cwe.service';
+import { TaskService } from '../task.service';
+import { Vulnerability } from '../data-models/vulnerability';
 @Component({
   selector: 'app-side-nav',
   templateUrl: './side-nav.component.html',
@@ -8,26 +8,24 @@ import { CWEService } from '../cwe.service';
 })
 export class SideNavComponent implements OnInit {
 
-  constructor(private service: CWEService) { }
-  
-
-  CWEs: CWE[];
-  @Output() eselectedCWE: EventEmitter<CWE> = new EventEmitter();
-  selectedCWE: CWE;
+  constructor(private service: TaskService) { }
   ngOnInit(): void {
-    this.getCWEs()
-
+    this.getVulnerabilities();
   }
-  getCWEs(){
+ 
+  vulnerabilities: Vulnerability[];
+  @Output() emiter: EventEmitter<Vulnerability> = new EventEmitter();
+  selectedVulnerability: Vulnerability;
+  getVulnerabilities(){
     this.service.getList().subscribe(list => {
-      this.CWEs = list;     
-      this.selectCWE(this.CWEs[0]);
-    });
+      this.vulnerabilities = list;
+      this.selectVulnerability(this.vulnerabilities[0]);
+    })
   }
 
-  selectCWE(selectedCWE: CWE){
-   this.eselectedCWE.emit(selectedCWE);
-   this.selectedCWE = selectedCWE; 
+  selectVulnerability(selectedVulnerability: Vulnerability){
+    this.selectedVulnerability = selectedVulnerability;
+    this.emiter.emit(selectedVulnerability);
   }
 
 }

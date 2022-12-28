@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CWE } from './data-models/cwe';
+import { Vulnerability } from './data-models/vulnerability';
 
 @Component({
   selector: 'app-root',
@@ -9,10 +10,9 @@ import { CWE } from './data-models/cwe';
 export class AppComponent {
   title = 'frontend-angular';
   
-  cwe: CWE ={id:0, description: "", name: ""};
+  vulnerability: Vulnerability ={id:0, category: "", description: ""};
 
-  selectCWE(selectedCWE:CWE){
-    this.cwe = selectedCWE;
-    console.log(selectedCWE.id);
+  selectVulnerability(selectedVulnerability:Vulnerability){
+    this.vulnerability = selectedVulnerability;
   }
 }
