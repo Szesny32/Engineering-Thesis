@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { TaskService } from '../task.service';
+import { TaskService } from '../services/task.service';
 import { Vulnerability } from '../data-models/vulnerability';
 @Component({
   selector: 'app-side-nav',

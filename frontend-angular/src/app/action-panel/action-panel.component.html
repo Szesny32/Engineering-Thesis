@@ -1,0 +1,17 @@
+<div class="mheader">
+    A{{selectedVulnerability.id}}: {{selectedVulnerability.category}}
+</div>
+
+<div [ngSwitch]="selectedVulnerability.id">
+    <div *ngSwitchCase="1"><app-page-a1></app-page-a1></div>
+    <div *ngSwitchCase="2"><app-cwe89></app-cwe89></div>
+    <div *ngSwitchCase="3"><app-cwe331></app-cwe331></div>
+    <div *ngSwitchCase="4"><app-cwe209></app-cwe209></div>
+    <div *ngSwitchCase="5"><app-test></app-test></div>
+    <div *ngSwitchCase="6"><app-cwe22></app-cwe22></div>
+    <div *ngSwitchCase="7"><app-cwe89></app-cwe89></div>
+    <div *ngSwitchCase="8"><app-cwe331></app-cwe331></div>
+    <div *ngSwitchCase="9"><app-cwe209></app-cwe209></div>
+    <div *ngSwitchCase="10"><app-test></app-test></div>
+    <div *ngSwitchDefault>404</div>
+</div>

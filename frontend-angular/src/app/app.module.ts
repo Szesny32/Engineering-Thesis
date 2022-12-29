@@ -13,6 +13,8 @@ import { Cwe89Component } from './cwe-list/cwe-page/cwe89/cwe89.component';
 import { DialogComponent } from './dialog/dialog.component';
 import { Cwe331Component } from './cwe-list/cwe-page/cwe331/cwe331.component';
 import { Cwe209Component } from './cwe-list/cwe-page/cwe209/cwe209.component';
+import { ActionPanelComponent } from './action-panel/action-panel.component';
+import { PageA1Component } from './action-panel/page-a1/page-a1.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { Cwe209Component } from './cwe-list/cwe-page/cwe209/cwe209.component';
     Cwe89Component,
     DialogComponent,
     Cwe331Component,
-    Cwe209Component
+    Cwe209Component,
+    ActionPanelComponent,
+    PageA1Component
   ],
   imports: [
     BrowserModule,

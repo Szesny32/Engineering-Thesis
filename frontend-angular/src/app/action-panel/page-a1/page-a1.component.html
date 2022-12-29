@@ -1,0 +1,69 @@
+<div class="assistantPanel">
+    <div class="dialog">
+        <!---->
+        <div *ngIf="selectedLevel==0">
+            <div class="text">Vuln</div>
+        </div>
+        <!---->
+        <div *ngIf="selectedLevel==1">
+            <div class="text">Sec</div>
+        </div>
+        <!---->
+        <div *ngIf="selectedLevel==2">
+            <div class="text">...</div>
+        </div>
+         <!---->
+         <div *ngIf="selectedLevel==3">
+            <div class="text">...</div>
+        </div>
+        <div *ngIf="selectedLevel==4">
+            <div class="text">...</div>
+        </div>
+    </div>
+    <!---->
+    <div class="rightPanel">
+        <div class="assistant">
+            <img src="/assets/images/ass2.png">
+        </div>
+        <div class="menu">
+            <button *ngFor="let number of [0,1,2,3,4]; let i = index"
+                [ngClass]="i==selectedLevel? 'circleSet' : 'circle'" (click)="setDialog(i)"></button>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="selectedLevel==0">
+    <div>
+        <br>
+        <b>Password change form:</b><br><br>
+        Hi! {{user.login}} | {{user.email}} <br><br>
+        
+        <label for="passwd1">New password: </label><br>
+        <input id="passwd1" [(ngModel)]="passwd1" type="password"/> <br><br>
+        <label for="passwd2">Confirm password: </label><br>
+        <input id="passwd2" [(ngModel)]="passwd2" type="password"/><br><br>
+    </div>
+    <button (click)="submit(false, passwd1, passwd2)">Submit</button><br><br>
+    {{response}} <br><br><br>
+</div>
+<div *ngIf="selectedLevel==1">
+    <div>
+        <br>
+        <b>Password change form:</b><br><br>
+        Hi! {{user.login}} | {{user.email}} <br><br>
+        
+        <label for="passwd1">New password: </label><br>
+        <input id="passwd1" [(ngModel)]="passwd1" type="password"/> <br><br>
+        <label for="passwd2">Confirm password: </label><br>
+        <input id="passwd2" [(ngModel)]="passwd2" type="password"/><br><br>
+    </div>
+    <button (click)="submit(true, passwd1, passwd2)">Submit</button><br><br>
+    {{response}} <br><br><br>
+</div>
+
+<div *ngIf="selectedLevel==2">
+
+</div>
+<div *ngIf="selectedLevel==3">
+
+</div>

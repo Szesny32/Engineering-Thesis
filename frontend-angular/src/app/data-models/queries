@@ -1,0 +1,7 @@
+INSERT INTO `a1__users` (`id`,`login`,`e-mail`,`passwd`)
+VALUES
+  (1,"Harrell","dolor@hotmail.org","LKU15ALK2FR"),
+  (2,"Golden","mauris.blandit.mattis@yahoo.org","CTK12SRA7WD"),
+  (3,"Hardy","eget.dictum@hotmail.org","IPC67SKN9RN"),
+  (4,"Ochoa","rhoncus@aol.com","SMI77FBF5MD"),
+  (5,"Ortega","odio.semper@aol.edu","ZNO20SDT4IH");
