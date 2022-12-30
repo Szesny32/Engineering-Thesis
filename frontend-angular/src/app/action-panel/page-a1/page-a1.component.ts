@@ -42,6 +42,9 @@ export class PageA1Component implements OnInit {
     this.user = user;
   }
 
+  updateResponse(response: string){
+    this.response = response;
+  }
  
 
 

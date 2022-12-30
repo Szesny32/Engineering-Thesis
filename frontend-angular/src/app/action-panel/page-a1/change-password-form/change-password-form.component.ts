@@ -18,13 +18,13 @@ export class ChangePasswordFormComponent implements OnInit {
   @Input() user: UserA1;
  
 
-
+  @Output() response = new EventEmitter<string>();
   
 
 
  passwd1: string;
  passwd2: string;
- response: string;
+
 
   
 
@@ -34,23 +34,19 @@ export class ChangePasswordFormComponent implements OnInit {
   }
 
 
-  submit(secure: boolean, passwd: string, passwd_confirm: string): void {
+  submit(passwd: string, passwd_confirm: string): void {
 
     if(passwd!=passwd_confirm){
-      this.response = "Passwords don't match";
+      this.response.emit("Passwords don't match");
       return;
     }
     
       this.service.vuln_changePsswd(this.user.id, passwd, passwd_confirm)
       .subscribe(response  => {
         console.log(response);
-       this.response = response['message'];
+        this.response.emit(response['message']);
       });
     
     this.submitForm.emit();
   }
-
- 
-  
-
 }

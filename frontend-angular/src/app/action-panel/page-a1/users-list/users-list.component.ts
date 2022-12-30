@@ -9,6 +9,7 @@ import { UserA1_b } from '../page-a1.component';
 export class UsersListComponent implements OnInit {
 
   constructor() { }
+  @Input() id: number;
   @Input() users: UserA1_b[];
 
   ngOnInit(): void {

@@ -2,7 +2,7 @@
     <div class="dialog">
         <!---->
         <div *ngIf="selectedLevel==0">
-            <div class="text">Podatny formularz</div>
+            <div class="text">Atak</div>
         </div>
         <!---->
         <div *ngIf="selectedLevel==1">
@@ -12,6 +12,10 @@
         <div *ngIf="selectedLevel==2">
             <div class="text">Postman - secured</div>
         </div>
+        <!---->
+        <div *ngIf="selectedLevel==3">
+            <div class="text">Obrona</div>
+        </div>
     </div>
     <!---->
     <div class="rightPanel">
@@ -19,28 +23,22 @@
             <img src="/assets/images/ass2.png">
         </div>
         <div class="menu">
-            <button *ngFor="let number of [0,1,2]; let i = index"
+            <button *ngFor="let number of [0,1,2,3]; let i = index"
                 [ngClass]="i==selectedLevel? 'circleSet' : 'circle'" (click)="setDialog(i)"></button>
         </div>
     </div>
 </div>
 
-<td>
+<br><br>
 
-</td>
-
-<br>
-
-<br>
-{{user.expire_at}}
-
-<table  cellpadding="10" cellspacing="0" class="centered-table">
+<table  cellpadding="10" cellspacing="0" class="centered-table" *ngIf="selectedLevel==0 ||selectedLevel==1 || selectedLevel==2">
     <tr>
         <td *ngIf="selectedLevel==0">
             <app-change-password-form 
                 [user]="user"
                 [selectedLevel]="selectedLevel"
-                (submitForm)="updateUsersData()">
+                (submitForm)="updateUsersData()"
+                (response)="updateResponse($event)">
             </app-change-password-form>
         </td>
         <td *ngIf="selectedLevel==1 || selectedLevel==2">
@@ -48,20 +46,22 @@
                 [user]="user"
                 [selectedLevel]="selectedLevel"
                 (submitForm)="updateUsersData()"
-                (userChanged)="updateUserData($event)">
+                (userChanged)="updateUserData($event)"
+                (response)="updateResponse($event)">
             </app-http-change-password-form>
         </td>
         <td>
-            <app-a1-users-list [users]="users"></app-a1-users-list>
+            <app-a1-users-list 
+                [id]="user.id"
+                [users]="users">
+            </app-a1-users-list>
         </td>
     </tr> 
+    <tr>
+        <td colspan="2" style => {{response}}</td>
+    </tr>
 </table>
 
-<br><br>
-
-<div>
-
-</div>
 
 
 

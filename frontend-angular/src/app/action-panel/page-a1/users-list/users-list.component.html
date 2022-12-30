@@ -5,7 +5,7 @@
         <td>e-mail</td>
         <td>password</td>
     </tr>    
-    <tr *ngFor="let user of users">
+    <tr *ngFor="let user of users" [ngClass]="{'user': user.id == id}">
         <td>{{user.id}} </td>
         <td>{{user.login}}</td>
         <td>{{user.email}}</td>
