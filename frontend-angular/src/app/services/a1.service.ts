@@ -26,7 +26,7 @@ export class A1Service {
   secure_changePsswd(id: number,sessid: string, passwd: string, passwd_confirm: string){
     
     const body = {id, sessid, passwd, passwd_confirm};
-    
+    console.log(body);
     let headers = new HttpHeaders();
     headers.append('Accept', 'application/json');
     const requestOptions = { headers: headers};

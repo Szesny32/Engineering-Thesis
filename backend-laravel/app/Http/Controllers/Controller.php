@@ -61,17 +61,11 @@ class Controller extends BaseController
         $currentTimestamp = Carbon::now()->setTimezone('Europe/Warsaw')->toDateTimeString();
         $authorization = A1_Session::where('sessid', $fields['sessid'])
             ->where('user_id',$fields['id'])
-            ->whereDate('expire_at','>', $currentTimestamp)
-            ->first();
-
-
-            $data = A1_Session::select('expire_at')->where('sessid', $fields['sessid'])
-            ->where('user_id',$fields['id'])
+            ->where('expire_at','>', $currentTimestamp)
             ->first();
 
          if($authorization == null){
             return ["message" => 'You do not have permissions or your session has expired!'];
-
          } else{
 
             //Passwords are not the same

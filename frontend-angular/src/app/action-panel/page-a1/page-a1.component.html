@@ -2,22 +2,15 @@
     <div class="dialog">
         <!---->
         <div *ngIf="selectedLevel==0">
-            <div class="text">Vuln</div>
+            <div class="text">Podatny formularz</div>
         </div>
         <!---->
         <div *ngIf="selectedLevel==1">
-            <div class="text">Sec</div>
+            <div class="text">Postman</div>
         </div>
         <!---->
         <div *ngIf="selectedLevel==2">
-            <div class="text">...</div>
-        </div>
-         <!---->
-         <div *ngIf="selectedLevel==3">
-            <div class="text">...</div>
-        </div>
-        <div *ngIf="selectedLevel==4">
-            <div class="text">...</div>
+            <div class="text">Postman - secured</div>
         </div>
     </div>
     <!---->
@@ -26,29 +19,43 @@
             <img src="/assets/images/ass2.png">
         </div>
         <div class="menu">
-            <button *ngFor="let number of [0,1,2,3,4]; let i = index"
+            <button *ngFor="let number of [0,1,2]; let i = index"
                 [ngClass]="i==selectedLevel? 'circleSet' : 'circle'" (click)="setDialog(i)"></button>
         </div>
     </div>
 </div>
 
+<td>
 
-<app-change-password-form 
-    [user]="user" 
-    [selectedLevel]="selectedLevel"
-    (userChanged)="updateUserData($event)"
-    (submitForm)="updateUsersData()">
-</app-change-password-form>
-
-<app-a1-users-list
-    [users]="users">
-</app-a1-users-list>
+</td>
 
 <br>
-<app-http-change-password-form
-    [selectedLevel]="selectedLevel"
-    (submitForm)="updateUsersData()">
-</app-http-change-password-form>
+
+<br>
+{{user.expire_at}}
+
+<table  cellpadding="10" cellspacing="0" class="centered-table">
+    <tr>
+        <td *ngIf="selectedLevel==0">
+            <app-change-password-form 
+                [user]="user"
+                [selectedLevel]="selectedLevel"
+                (submitForm)="updateUsersData()">
+            </app-change-password-form>
+        </td>
+        <td *ngIf="selectedLevel==1 || selectedLevel==2">
+            <app-http-change-password-form
+                [user]="user"
+                [selectedLevel]="selectedLevel"
+                (submitForm)="updateUsersData()"
+                (userChanged)="updateUserData($event)">
+            </app-http-change-password-form>
+        </td>
+        <td>
+            <app-a1-users-list [users]="users"></app-a1-users-list>
+        </td>
+    </tr> 
+</table>
 
 <br><br>
 

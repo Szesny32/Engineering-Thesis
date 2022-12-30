@@ -1,4 +1,8 @@
 
+
+.centered-table{
+  margin: 0 auto;
+}
     .text-danger {
         color: red;
       }
@@ -7,3 +11,9 @@
         color: green;
       }
 
+       td {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 50px;
+        padding-right: 50px;
+      }
