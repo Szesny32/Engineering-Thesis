@@ -23,6 +23,9 @@ Route::get('/vulnerabilities', [Controller::class, 'index']);
 Route::post('/A1-changePasswd_vuln', [Controller::class, 'changePasswd_vuln']);
 Route::post('/A1-changePasswd', [Controller::class, 'changePasswd']);
 Route::post('/A1-getUser', [Controller::class, 'getUser']);
+Route::post('/A1-getUsers', [Controller::class, 'getUsers']);
+Route::post('/A1-resfreshSession', [Controller::class, 'resfreshSession']);
+Route::post('/A1-expireSession', [Controller::class, 'expireSession']);
 
 
 

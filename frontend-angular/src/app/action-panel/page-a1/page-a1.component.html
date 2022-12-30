@@ -32,38 +32,54 @@
     </div>
 </div>
 
-<div *ngIf="selectedLevel==0">
-    <div>
-        <br>
-        <b>Password change form:</b><br><br>
-        Hi! {{user.login}} | {{user.email}} <br><br>
-        
-        <label for="passwd1">New password: </label><br>
-        <input id="passwd1" [(ngModel)]="passwd1" type="password"/> <br><br>
-        <label for="passwd2">Confirm password: </label><br>
-        <input id="passwd2" [(ngModel)]="passwd2" type="password"/><br><br>
+
+<div>
+
+    <div *ngIf="selectedLevel==1">
+        <div *ngIf="getExpireAt()">
+            <span class="text-danger">Your session expired at: {{user.expire_at}}</span>
+            <button (click)="refreshSession()">Refresh</button>
+        </div>
+        <div *ngIf="!getExpireAt()">
+            <span class="text-success">Your session will expire at: {{user.expire_at}} </span>
+            <button (click)="expireSession()">Expire</button>
+        </div>
     </div>
-    <button (click)="submit(false, passwd1, passwd2)">Submit</button><br><br>
-    {{response}} <br><br><br>
-</div>
-<div *ngIf="selectedLevel==1">
-    <div>
-        <br>
-        <b>Password change form:</b><br><br>
-        Hi! {{user.login}} | {{user.email}} <br><br>
+    
+    
+
+    
+    <br><br><br>
+
+   <b>Password change form:</b><br><br>
+    Hi! {{user.login}} | {{user.email}} <br><br>
+    <label for="passwd1">New password: </label><br>
+    <input id="passwd1" [(ngModel)]="passwd1" type="password"/> <br><br>
+    <label for="passwd2">Confirm password: </label><br>
+    <input id="passwd2" [(ngModel)]="passwd2" type="password"/><br><br>
+
+    <div *ngIf="selectedLevel==0">
         
-        <label for="passwd1">New password: </label><br>
-        <input id="passwd1" [(ngModel)]="passwd1" type="password"/> <br><br>
-        <label for="passwd2">Confirm password: </label><br>
-        <input id="passwd2" [(ngModel)]="passwd2" type="password"/><br><br>
+        <button (click)="submit(false, passwd1, passwd2)">Submit</button>
     </div>
-    <button (click)="submit(true, passwd1, passwd2)">Submit</button><br><br>
-    {{response}} <br><br><br>
+    <div *ngIf="selectedLevel==1">
+        <button (click)="submit(true, passwd1, passwd2)">Submit</button>
+    </div>
+    <br><br>{{response}} <br><br><br> 
 </div>
-
-<div *ngIf="selectedLevel==2">
-
-</div>
-<div *ngIf="selectedLevel==3">
-
+<div>
+    <table border ="1" cellpadding="10" cellspacing="0">
+        <tr>
+            <td>id </td>
+            <td>login</td>
+            <td>e-mail</td>
+            <td>password</td>
+        </tr>    
+        <tr *ngFor="let user of users">
+            <td>{{user.id}} </td>
+            <td>{{user.login}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.passwd}}</td>
+        </tr>    
+    </table>
 </div>

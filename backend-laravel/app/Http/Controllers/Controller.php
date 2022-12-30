@@ -20,7 +20,8 @@ class Controller extends BaseController
 
     //A1
     public function changePasswd_vuln(Request $request){
-        
+       
+
         $fields = $request->validate([
             'id' => 'required|integer',
             'passwd' => 'required|string',
@@ -93,22 +94,70 @@ class Controller extends BaseController
             return ["message" => 'Password for user id = '.$fields['id'].' was successfully changed.'];
 
          }
-         
-            
-
-
-
-
-          
-
-
     }
 
 
-    public function getUser(){
-        $user = A1_User::select('login', 'e-mail as email', 'sessid')
+    public function getUser(Request $request){
+
+        $fields = $request->validate([
+            'id' => 'required|integer',
+        ]);
+
+
+        $user = A1_User::select('a1__users.id','login', 'e-mail as email', 'sessid', 'expire_at')
         ->join('a1__sessions', 'a1__users.id', '=', 'a1__sessions.user_id')
-        ->where('a1__users.id', 1)
+        ->where('a1__users.id', $fields['id'])
+        ->first();
+
+        return $user;
+    }
+
+    
+
+
+    
+    public function getUsers(){
+        $user = A1_User::select('id','login', 'e-mail as email', 'passwd')
+        ->get();
+
+        return $user;
+    }
+
+
+    public function resfreshSession(Request $request){
+        $fields = $request->validate([
+            'id' => 'required|integer',
+        ]);
+
+
+        $currentTimestamp = Carbon::now()->addMinutes(15)->setTimezone('Europe/Warsaw')->toDateTimeString();
+        A1_Session::where('id', 1)
+        ->update(['expire_at' => $currentTimestamp]);
+
+
+        
+        $user = A1_User::select('a1__users.id','login', 'e-mail as email', 'sessid', 'expire_at')
+        ->join('a1__sessions', 'a1__users.id', '=', 'a1__sessions.user_id')
+        ->where('a1__users.id', $fields['id'])
+        ->first();
+
+        return $user; 
+    }
+
+    public function expireSession(Request $request){
+        $fields = $request->validate([
+            'id' => 'required|integer',
+        ]);
+
+
+        $currentTimestamp = Carbon::now()->subMinutes(5)->setTimezone('Europe/Warsaw')->toDateTimeString();
+        A1_Session::where('id', 1)
+        ->update(['expire_at' => $currentTimestamp]);
+
+
+        $user = A1_User::select('a1__users.id','login', 'e-mail as email', 'sessid', 'expire_at')
+        ->join('a1__sessions', 'a1__users.id', '=', 'a1__sessions.user_id')
+        ->where('a1__users.id', $fields['id'])
         ->first();
 
         return $user;
