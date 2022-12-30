@@ -12,11 +12,15 @@ export class PageA1Component implements OnInit {
 
   //ID: number = 1;
   //sessid: string = "65e84be33532fb784c48129675f9eff3a682b27168c0ea744b2cf58ee02337c5";
-  user: UserA1 = {id: 0, login: "", email: "",  sessid: "", expire_at: ""};
+  user: UserA1 = {id: 1, login: "", email: "",  sessid: "", expire_at: ""};
   users:UserA1_b[];
   response: String = "";
   passwd1: string;
   passwd2: string;
+
+
+  id: number = 1;
+  sessid: string ="";
 
   
   constructor(private service: A1Service) { }
@@ -86,11 +90,7 @@ getUser(id: number){
       return true;
      else 
       return false;
-    
   }
-
-
-
 
 }
 
