@@ -1,3 +1,4 @@
+/*
 INSERT INTO `a1__users` (`id`,`login`,`e-mail`,`passwd`)
 VALUES
   (1,"Harrell","dolor@hotmail.org","LKU15ALK2FR"),
@@ -5,3 +6,41 @@ VALUES
   (3,"Hardy","eget.dictum@hotmail.org","IPC67SKN9RN"),
   (4,"Ochoa","rhoncus@aol.com","SMI77FBF5MD"),
   (5,"Ortega","odio.semper@aol.edu","ZNO20SDT4IH");
+
+
+  INSERT INTO `a2__users` (`id`,`login`,`e-mail`,`salt`,`passwd`,`encryption_type`)
+  VALUES
+  (1,"Harrell","dolor@hotmail.org",null,"aaaaaa",0),
+  (2,"Golden","mauris.blandit.mattis@yahoo.org",null,"12345qwert",0),
+  (3,"Hardy","eget.dictum@hotmail.org",null,"zxcvbn",0),
+  (4,"Ochoa","rhoncus@aol.com",null,"jordan",0),
+  (5,"Ortega","odio.semper@aol.edu",null,"dragon",0),
+  (6,"King","vestibulum.neque@protonmail.ca",null,"MTAyMDMw",1),
+  (7,"Harris","vitae.semper@aol.net",null,"cHJpbmNlc3M=",1),
+  (8,"Salinas","lectus.cum.sociis@icloud.org",null,"MTQ3MjU4MzY5",1),
+  (9,"Higgins","leo.cras@hotmail.net",null,"MTIzNjU0",1),
+  (10,"Keller","in.consectetuer@hotmail.edu",null,"cXdlYXNk",1),
+  (11,"Long","suspendisse.aliquet@aol.edu",null,"2a057642222a878bc360f52f8e1f0dfd2af93196f123269397423155a4ec4884",2),
+  (12,"Roth","eu.metus@protonmail.edu",null,"eef1394ee3b80d9ce18ebfe618a056e6e0299c12cd19c99c796d482eb52277c6",2),
+  (13,"Davenport","arcu@google.ca",null,"ef51306214d9a6361ee1d5b452e6d2bb70dc7ebb85bf9e02c3d4747fb57d6bec",2),
+  (14,"Huber","vulputate.risus.a@icloud.org",null,"5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8",2),
+  (15,"Gomez","nec.tellus@outlook.com",null,"5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8",2),
+  (16,"Long2","suspendisse.aliquet2@aol.edu","+])Iv[EL5-zC","44bd0ae0b51ca85447508ccbaf946cd3b9398bd5a3ffa14f063310691dd4ca40",3), 
+  (17,"Roth2","eu.metu2s@protonmail.edu","x*|5*$(8i>a~","8d45d4765c12b6fdbac5b8a79949289249bdeda5ad3e7322dc395f1cc0610b8f",3),
+  (18,"Davenport2","arc2u@google.ca","t7=esn6%GF+o","8afe6a0d8a317a9f55e2fa3f821f44e81c3f6b9d45bc03b91fc7867d09ae6c2b",3),
+  (19,"Huber2","vulputate.risus.a2@icloud.org","L5k8I3/cNW@!","63a803c286ffc316a28f465cfb9bf872102ba6cb78e1dd14dd1548909d6aaa5e",3),
+  (20,"Gomez2","nec.tellus2@outlook.com","e5O'7x!{uj8i","a15c9f8e774199733b0645eea81b4b5c9d5a8a78954722cdf7c23d2da0135b88",3);
+  
+  //101010
+  //1234554321
+  //1234qwer
+  //password
+  //password
+  
+  
+  //3 passwd+salt
+  //1111
+  //princess1
+  //myspace1
+  //password
+  //password

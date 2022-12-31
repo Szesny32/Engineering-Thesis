@@ -12,10 +12,6 @@
         <div *ngIf="selectedLevel==2">
             <div class="text">Postman - secured</div>
         </div>
-        <!---->
-        <div *ngIf="selectedLevel==3">
-            <div class="text">Obrona</div>
-        </div>
     </div>
     <!---->
     <div class="rightPanel">
@@ -23,7 +19,7 @@
             <img src="/assets/images/ass2.png">
         </div>
         <div class="menu">
-            <button *ngFor="let number of [0,1,2,3]; let i = index"
+            <button *ngFor="let number of [0,1,2]; let i = index"
                 [ngClass]="i==selectedLevel? 'circleSet' : 'circle'" (click)="setDialog(i)"></button>
         </div>
     </div>

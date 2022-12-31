@@ -1,0 +1,9 @@
+<div>
+    <b>Log In</b><br><br>
+     <label for="login">login: </label><br>
+     <input id="login" [(ngModel)]="login"/> <br><br>
+     <label for="passwd">password: </label><br>
+     <input id="passwd" [(ngModel)]="passwd" type="password"/><br><br> 
+     <button (click)="logIn(login, passwd)">login</button>
+ </div>
+ {{response}}

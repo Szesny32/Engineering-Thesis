@@ -1,0 +1,40 @@
+<div class="assistantPanel">
+    <div class="dialog">
+        <!---->
+        <div *ngIf="selectedLevel==0">
+            <div class="text">Clear</div>
+        </div>
+        <!---->
+        <div *ngIf="selectedLevel==1">
+            <div class="text">base64</div>
+        </div>
+        <!---->
+        <div *ngIf="selectedLevel==2">
+            <div class="text">sha-256</div>
+        </div>
+        <!---->
+        <div *ngIf="selectedLevel==3">
+            <div class="text">salt+sha-256</div>
+        </div>
+    </div>
+    <!---->
+    <div class="rightPanel">
+        <div class="assistant">
+            <img src="/assets/images/ass2.png">
+        </div>
+        <div class="menu">
+            <button *ngFor="let number of [0,1,2,3]; let i = index"
+                [ngClass]="i==selectedLevel? 'circleSet' : 'circle'" (click)="setDialog(i)"></button>
+        </div>
+    </div>
+</div>
+
+<br><br>
+<app-a2-users-list 
+    [users]="users"
+    [selectedLevel]="selectedLevel">
+</app-a2-users-list>
+
+<app-a2-login-form
+    [selectedLevel]="selectedLevel">
+</app-a2-login-form>

@@ -16,8 +16,11 @@ import { Cwe209Component } from './cwe-list/cwe-page/cwe209/cwe209.component';
 import { ActionPanelComponent } from './action-panel/action-panel.component';
 import { PageA1Component } from './action-panel/page-a1/page-a1.component';
 import { ChangePasswordFormComponent } from './action-panel/page-a1/change-password-form/change-password-form.component';
-import { UsersListComponent } from './action-panel/page-a1/users-list/users-list.component';
+import { UsersA1ListComponent } from './action-panel/page-a1/users-list/users-list.component';
+import { UsersA2ListComponent } from './action-panel/page-a2/users-list/users-list.component';
 import { HTTPChangePasswordFormComponent } from './action-panel/page-a1/http-change-password-form/http-change-password-form.component';
+import { PageA2Component } from './action-panel/page-a2/page-a2.component';
+import { LoginFormComponent } from './action-panel/page-a2/login-form/login-form.component';
 
 @NgModule({
   declarations: [
@@ -33,8 +36,11 @@ import { HTTPChangePasswordFormComponent } from './action-panel/page-a1/http-cha
     ActionPanelComponent,
     PageA1Component,
     ChangePasswordFormComponent,
-    UsersListComponent,
-    HTTPChangePasswordFormComponent
+    UsersA1ListComponent,
+    UsersA2ListComponent,
+    HTTPChangePasswordFormComponent,
+    PageA2Component,
+    LoginFormComponent
   ],
   imports: [
     BrowserModule,

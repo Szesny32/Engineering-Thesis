@@ -1,8 +1,11 @@
 <?php
 
+use App\Http\Controllers\A1;
+use App\Http\Controllers\A2;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CWEController;
 use App\Http\Controllers\Controller;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,13 +23,14 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/vulnerabilities', [Controller::class, 'index']);
-Route::post('/A1-changePasswd_vuln', [Controller::class, 'changePasswd_vuln']);
-Route::post('/A1-changePasswd', [Controller::class, 'changePasswd']);
-Route::post('/A1-getUser', [Controller::class, 'getUser']);
-Route::post('/A1-getUsers', [Controller::class, 'getUsers']);
-Route::post('/A1-resfreshSession', [Controller::class, 'resfreshSession']);
-Route::post('/A1-expireSession', [Controller::class, 'expireSession']);
-
+Route::post('/A1-changePasswd_vuln', [A1::class, 'changePasswd_vuln']);
+Route::post('/A1-changePasswd', [A1::class, 'changePasswd']);
+Route::post('/A1-getUser', [A1::class, 'getUser']);
+Route::post('/A1-getUsers', [A1::class, 'getUsers']);
+Route::post('/A1-resfreshSession', [A1::class, 'resfreshSession']);
+Route::post('/A1-expireSession', [A1::class, 'expireSession']);
+Route::post('/A2-getUsers', [A2::class, 'getUsers']);
+Route::post('/A2-logIn', [A2::class, 'logIn']);
 
 
 

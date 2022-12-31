@@ -6,7 +6,7 @@ import { UserA1_b } from '../page-a1.component';
   templateUrl: './users-list.component.html',
   styleUrls: ['./users-list.component.scss']
 })
-export class UsersListComponent implements OnInit {
+export class UsersA1ListComponent implements OnInit {
 
   constructor() { }
   @Input() id: number;
