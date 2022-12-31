@@ -30,11 +30,31 @@
 </div>
 
 <br><br>
-<app-a2-users-list 
-    [users]="users"
-    [selectedLevel]="selectedLevel">
-</app-a2-users-list>
 
-<app-a2-login-form
-    [selectedLevel]="selectedLevel">
-</app-a2-login-form>
+
+
+
+
+<table  cellpadding="10" cellspacing="0" class="centered-table" >
+    <tr>
+        <td>
+            <app-a2-login-form
+                [selectedLevel]="selectedLevel"
+                (response)="updateResponse($event)">
+        </app-a2-login-form>
+        </td>
+        <td>
+            <app-a2-users-list 
+                [users]="users"
+                [selectedLevel]="selectedLevel">
+            </app-a2-users-list>
+        </td>
+        <td *ngIf="selectedLevel==1">
+            <app-base64decoder></app-base64decoder>
+        </td>
+    </tr> 
+    <tr>
+        <td *ngIf="selectedLevel!=1" colspan="2" style => {{response}}</td>
+        <td *ngIf="selectedLevel==1" colspan="3" style => {{response}}</td>
+    </tr>
+</table>

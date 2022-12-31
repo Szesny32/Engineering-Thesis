@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { A2Service } from 'src/app/services/a2.service';
 
 @Component({
@@ -12,17 +12,18 @@ export class LoginFormComponent implements OnInit {
 
   passwd: string;
   login: string;
-  response: string;
+  @Output() response = new EventEmitter<string>();
   @Input() selectedLevel: number;
 
   ngOnInit(): void {
-    this.response ="";
+    this.response.emit("");
   }
 
-logIn(login: string, password: string){
-this.service.logIn(login, password, this.selectedLevel).subscribe(response  => {
-  this.response = response['message'];
-});
+  logIn(login: string, password: string){
+  this.service.logIn(login, password, this.selectedLevel).subscribe(response  => {
+    this.response.emit(response['message']);
+  });
+
 }
 
 }

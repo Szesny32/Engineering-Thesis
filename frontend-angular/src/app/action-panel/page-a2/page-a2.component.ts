@@ -12,6 +12,7 @@ export class PageA2Component implements OnInit {
   constructor(private service: A2Service) { }
   selectedLevel: number = 0;
   users:UserA2[];
+  response: string = "";
   ngOnInit(): void {
     this.updateUsersData(0);
   }
@@ -24,7 +25,12 @@ export class PageA2Component implements OnInit {
   setDialog(id: number): void {
     this.selectedLevel = id;
     this.updateUsersData(id);
+    this.response="";
   }
+  updateResponse(response: string){
+    this.response = response;
+  }
+ 
 
 }
 export interface UserA2{

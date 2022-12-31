@@ -21,6 +21,7 @@ import { UsersA2ListComponent } from './action-panel/page-a2/users-list/users-li
 import { HTTPChangePasswordFormComponent } from './action-panel/page-a1/http-change-password-form/http-change-password-form.component';
 import { PageA2Component } from './action-panel/page-a2/page-a2.component';
 import { LoginFormComponent } from './action-panel/page-a2/login-form/login-form.component';
+import { Base64decoderComponent } from './action-panel/page-a2/base64decoder/base64decoder.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { LoginFormComponent } from './action-panel/page-a2/login-form/login-form
     UsersA2ListComponent,
     HTTPChangePasswordFormComponent,
     PageA2Component,
-    LoginFormComponent
+    LoginFormComponent,
+    Base64decoderComponent
   ],
   imports: [
     BrowserModule,

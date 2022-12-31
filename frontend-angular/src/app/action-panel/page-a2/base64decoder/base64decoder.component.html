@@ -1,0 +1,9 @@
+<div>
+    <b>Base64 Decoder</b><br><br>
+     <label for="encodedPasswd">Enter encoded password: </label><br>
+     <input id="encodedPasswd" [(ngModel)]="encodedPasswd" ><br><br> 
+     <button (click)="decode()">Decode</button>
+<br><br>
+ <label for="decodedPasswd">Decoded password:  </label><br>
+ {{decodedPasswd}}
+</div>
