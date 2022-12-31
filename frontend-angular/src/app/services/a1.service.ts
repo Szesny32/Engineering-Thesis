@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders, HttpRequest } from '@angular/common/http';
 import { UserA1, UserA1_b } from '../action-panel/page-a1/page-a1.component';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -68,7 +69,6 @@ export class A1Service {
     const requestOptions = { headers: headers };
     return this.http.post<UserA1>(this.ROOT_URL + '/A1-expireSession',body, requestOptions)
   }
-
 
 
 

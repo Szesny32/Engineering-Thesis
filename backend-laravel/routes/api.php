@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
+Route::get('/dictionary', [Controller::class, 'dictionary']);
 
 Route::get('/vulnerabilities', [Controller::class, 'index']);
 Route::post('/A1-changePasswd_vuln', [A1::class, 'changePasswd_vuln']);
@@ -31,6 +31,7 @@ Route::post('/A1-resfreshSession', [A1::class, 'resfreshSession']);
 Route::post('/A1-expireSession', [A1::class, 'expireSession']);
 Route::post('/A2-getUsers', [A2::class, 'getUsers']);
 Route::post('/A2-logIn', [A2::class, 'logIn']);
+Route::post('/A2-dictionary', [A2::class, 'getDictionary']);
 
 
 

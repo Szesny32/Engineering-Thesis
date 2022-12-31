@@ -22,6 +22,7 @@ import { HTTPChangePasswordFormComponent } from './action-panel/page-a1/http-cha
 import { PageA2Component } from './action-panel/page-a2/page-a2.component';
 import { LoginFormComponent } from './action-panel/page-a2/login-form/login-form.component';
 import { Base64decoderComponent } from './action-panel/page-a2/base64decoder/base64decoder.component';
+import { PasswdHashDictionaryComponent } from './action-panel/page-a2/passwd-hash-dictionary/passwd-hash-dictionary.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { Base64decoderComponent } from './action-panel/page-a2/base64decoder/bas
     HTTPChangePasswordFormComponent,
     PageA2Component,
     LoginFormComponent,
-    Base64decoderComponent
+    Base64decoderComponent,
+    PasswdHashDictionaryComponent
   ],
   imports: [
     BrowserModule,

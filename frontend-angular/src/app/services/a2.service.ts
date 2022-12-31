@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders, HttpRequest } from '@angular/common/http';
 import { UserA2 } from '../action-panel/page-a2/page-a2.component';
+import { PasswdHashPair } from '../action-panel/page-a2/passwd-hash-dictionary/passwd-hash-dictionary.component';
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +32,13 @@ export class A2Service {
     headers.append('Accept', 'application/json');
     const requestOptions = { headers: headers};
     return this.http.post<any>(this.ROOT_URL + '/A2-logIn', body,  requestOptions);
+  }
+
+  getDictionary(){
+    let headers = new HttpHeaders();
+    headers.append('Accept', 'application/json');
+    const requestOptions = { headers: headers};
+    return this.http.post<PasswdHashPair[]>(this.ROOT_URL + '/A2-dictionary',  requestOptions);
   }
 
 

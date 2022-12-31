@@ -57,4 +57,9 @@
         <td *ngIf="selectedLevel!=1" colspan="2" style => {{response}}</td>
         <td *ngIf="selectedLevel==1" colspan="3" style => {{response}}</td>
     </tr>
+    <tr>
+        <td *ngIf="selectedLevel==2 || selectedLevel==3" colspan="2">
+            <app-passwd-hash-dictionary></app-passwd-hash-dictionary>
+        </td>
+    </tr>
 </table>

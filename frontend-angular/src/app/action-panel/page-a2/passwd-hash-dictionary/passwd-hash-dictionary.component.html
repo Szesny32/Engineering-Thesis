@@ -1,0 +1,10 @@
+<table border ="1" cellpadding="10" cellspacing="0">
+    <tr>
+        <td>passwd</td>
+        <td>hash</td>
+    </tr>    
+    <tr *ngFor="let pair of pairs">
+        <td>{{pair.passwd}}</td>
+        <td>{{pair.hash}}</td>
+    </tr>    
+</table>

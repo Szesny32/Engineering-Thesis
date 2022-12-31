@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { map } from 'rxjs';
 import { User } from 'src/app/data-models/user';
 import { A1Service } from 'src/app/services/a1.service';
-
 @Component({
   selector: 'app-page-a1',
   templateUrl: './page-a1.component.html',
@@ -21,15 +21,20 @@ export class PageA1Component implements OnInit {
 
 
 
-  
+  inputPasswd:string[];
+
   constructor(private service: A1Service) { }
 
   ngOnInit(): void {
   
+
     this.getUser(1);
     this.updateUsersData();
  
   }
+
+  
+
   getUser(id: number){
     this.service.getUser(id).subscribe(user=>this.user  = user);
   }

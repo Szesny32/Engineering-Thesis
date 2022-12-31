@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\A2_Password_Dictionary;
 use App\Models\A2_User;
 use Illuminate\Http\Request;
 
@@ -53,5 +54,10 @@ class A2 extends Controller
             return ["message" => 'Welcome '.$user['login']];
         else
             return ["message" => 'Incorrect'];
+    }
+
+
+    public function getDictionary(){
+        return A2_Password_Dictionary::select('passwd', 'hash')->get();
     }
 }
