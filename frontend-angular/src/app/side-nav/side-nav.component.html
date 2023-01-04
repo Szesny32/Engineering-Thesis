@@ -1,5 +1,10 @@
 <div id="side-nav">
-    <button *ngFor="let vulnerability of vulnerabilities" [ngClass]="vulnerability.id==selectedVulnerability.id? 'selected-side-nav-button' : 'side-nav-button'" (click)="selectVulnerability(vulnerability)">
+    <button *ngFor="let vulnerability of vulnerabilities" 
+        [ngClass]="vulnerability.id==selectedVulnerability.id? 'selected-side-nav-button' : 'side-nav-button'" 
+        (click)="selectVulnerability(vulnerability)">
         A{{vulnerability.id}}: {{vulnerability.category}} 
     </button>
 </div>
+
+
+

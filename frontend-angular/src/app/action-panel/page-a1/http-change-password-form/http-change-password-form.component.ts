@@ -26,6 +26,7 @@ export class HTTPChangePasswordFormComponent implements OnInit {
     this.id = this.user.id;
     this.sessid = this.user.sessid;
   }
+  
   submit(secure: boolean, passwd: string, passwd_confirm: string): void {
 
     if(passwd!=passwd_confirm){

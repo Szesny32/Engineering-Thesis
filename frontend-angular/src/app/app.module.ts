@@ -23,6 +23,14 @@ import { PageA2Component } from './action-panel/page-a2/page-a2.component';
 import { LoginFormComponent } from './action-panel/page-a2/login-form/login-form.component';
 import { Base64decoderComponent } from './action-panel/page-a2/base64decoder/base64decoder.component';
 import { PasswdHashDictionaryComponent } from './action-panel/page-a2/passwd-hash-dictionary/passwd-hash-dictionary.component';
+import { PageA3Component } from './action-panel/page-a3/page-a3.component';
+import { PageA4Component } from './action-panel/page-a4/page-a4.component';
+import { PageA5Component } from './action-panel/page-a5/page-a5.component';
+import { PageA6Component } from './action-panel/page-a6/page-a6.component';
+import { PageA7Component } from './action-panel/page-a7/page-a7.component';
+import { PageA8Component } from './action-panel/page-a8/page-a8.component';
+import { PageA9Component } from './action-panel/page-a9/page-a9.component';
+import { PageA10Component } from './action-panel/page-a10/page-a10.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +52,15 @@ import { PasswdHashDictionaryComponent } from './action-panel/page-a2/passwd-has
     PageA2Component,
     LoginFormComponent,
     Base64decoderComponent,
-    PasswdHashDictionaryComponent
+    PasswdHashDictionaryComponent,
+    PageA3Component,
+    PageA4Component,
+    PageA5Component,
+    PageA6Component,
+    PageA7Component,
+    PageA8Component,
+    PageA9Component,
+    PageA10Component
   ],
   imports: [
     BrowserModule,

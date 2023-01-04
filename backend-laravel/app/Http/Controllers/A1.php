@@ -43,7 +43,7 @@ class A1 extends BaseController
 
         $fields = $request->validate([
             'id' => 'required|integer',
-            'sessid' => 'required|string',
+            'sessid' => 'required|string|min:64|max:64',
             'passwd' => 'required|string',
             'passwd_confirm' => 'required|string',
         ]);
