@@ -10,8 +10,7 @@ use Illuminate\Support\Facades\Crypt;
 class A8 extends Controller
 {
     public function getKeys(){
-        $keys = A8_Keys::select('public_key', 'private_key')
-        ->get();
+        $keys = A8_Keys::get();
         return $keys;
     }
 

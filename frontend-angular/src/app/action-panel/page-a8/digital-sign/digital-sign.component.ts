@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Key } from '../page-a8.component';
 
 @Component({
   selector: 'app-digital-sign',
@@ -7,9 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DigitalSignComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  constructor() {}
+  @Input() keys: Key[];
+  activeKey: Key = {id:0, private_key:"", public_key: ""};
+  ngOnInit(): void {}
 }

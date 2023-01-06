@@ -1,10 +1,13 @@
 <table >
     <tr>
         <td>
-            <app-create-resource></app-create-resource>
+            <app-create-resource>
+            </app-create-resource>
         </td>
         <td> 
-            <app-digital-sign></app-digital-sign>
+            <app-digital-sign
+                [keys]="keys">
+            </app-digital-sign>
         </td>
     </tr>
 </table>

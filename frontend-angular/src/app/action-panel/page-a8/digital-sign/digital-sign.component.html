@@ -1,1 +1,13 @@
-<p>digital-sign works!</p>
+<label for="keys">Wybierz klucz: </label>
+<select id="keys" name="keys" [(ngModel)]="activeKey">
+    <option *ngFor="let key of keys" [ngValue]="key">{{key.id}}</option>
+</select>
+
+<br><br><br>
+<label for="keys">Klucz prywatny: </label><br>
+<textarea [value]="activeKey.private_key" style="width:500px; height:200px;"></textarea>
+<br><br>
+<label for="keys">Klucz publiczny: </label><br>
+<textarea [value]="activeKey.public_key" style="width:500px; height:200px;"></textarea>
+<br><br>
+<button>Sign</button>
