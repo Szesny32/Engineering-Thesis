@@ -1,1 +1,50 @@
-<p>page-a7 works!</p>
+pin
+
+harcoded password
+
+{{pin}}
+
+<br>
+<input type="text" [value]="userPin" readonly>
+
+<br>
+<br>
+
+<div>
+    <button class="pin-button" (click)="type(1)">1</button>
+    <button class="pin-button" (click)="type(2)">2</button>
+    <button class="pin-button" (click)="type(3)">3</button>
+</div>
+<div>
+    <button class="pin-button" (click)="type(4)">4</button>
+    <button class="pin-button" (click)="type(5)">5</button>
+    <button class="pin-button" (click)="type(6)">6</button>
+</div>
+<div>
+    <button class="pin-button" (click)="type(7)">7</button>
+    <button class="pin-button" (click)="type(8)">8</button>
+    <button class="pin-button" (click)="type(9)">9</button>
+</div>
+<div>
+    <button class="pin-button" (click)="type(10)">OK</button>
+    <button class="pin-button" (click)="type(0)">0</button>
+    <button class="pin-button" (click)="type(-1)">⌫</button>
+</div>
+
+<br>
+<input type="text" [(ngModel)]="n">
+<button (click)="generatePin()">Generate</button>
+<br>
+
+
+<button (click)="checkPin()">Testuj PIN-y</button>
+
+<progress id="progressBar" max="10000" value="0"></progress>
+<div id="currentPinContainer">
+    Aktualny PIN: {{checkedPin}}
+</div>
+
+<div class="assistantPanel">
+    <div class="dialog">
+    <p *ngFor="let message of messages">{{ message }}</p>
+</div></div>
