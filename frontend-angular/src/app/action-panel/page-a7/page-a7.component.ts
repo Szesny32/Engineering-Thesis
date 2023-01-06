@@ -40,6 +40,7 @@ export class PageA7Component implements OnInit {
 
 
 
+
    async checkPin() {
     const startTime = Date.now();
     const progressBar = document.getElementById('progressBar') as HTMLProgressElement;
@@ -49,7 +50,7 @@ export class PageA7Component implements OnInit {
     const chunkSize = 10000;
     for (let i = 0; i <= this.combinations-1; i += chunkSize) {
       progressBar.value = i +chunkSize;
-      await this.delay();
+      await this.delay(1);
         if (this.checkPinChunk(i, i + chunkSize, startTime)) {
           progressBar.value = progressBar.max;
           return;
@@ -57,9 +58,9 @@ export class PageA7Component implements OnInit {
     }
   }
 
-delay(){
+delay(ms: number){
   return new Promise(resolve => {
-    setInterval(resolve, 1); 
+    setInterval(resolve, ms); 
   });
 }
 
@@ -107,6 +108,16 @@ delay(){
       newPin += Math.floor(Math.random() * 10);
     }
     this.pin = newPin;
+    this.typeAll(newPin);
+  }
+
+  async typeAll(pin: string){
+    this.userPin = "";
+    for (var i = 0; i < pin.length; i++) {
+  
+      await this.delay(150);
+      this.userPin+=pin.charAt(i);
+    }
   }
 
 

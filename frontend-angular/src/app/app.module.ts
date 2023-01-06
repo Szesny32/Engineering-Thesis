@@ -32,6 +32,10 @@ import { PageA8Component } from './action-panel/page-a8/page-a8.component';
 import { PageA9Component } from './action-panel/page-a9/page-a9.component';
 import { PageA10Component } from './action-panel/page-a10/page-a10.component';
 import { A3LoginFormComponent } from './action-panel/page-a3/a3-login-form/a3-login-form.component';
+import { CreateResourceComponent } from './action-panel/page-a8/create-resource/create-resource.component';
+import { DigitalSignComponent } from './action-panel/page-a8/digital-sign/digital-sign.component';
+import { VerifyResourceComponent } from './action-panel/page-a8/verify-resource/verify-resource.component';
+import { DigitalSignVerifyComponent } from './action-panel/page-a8/digital-sign-verify/digital-sign-verify.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +66,11 @@ import { A3LoginFormComponent } from './action-panel/page-a3/a3-login-form/a3-lo
     PageA8Component,
     PageA9Component,
     PageA10Component,
-    A3LoginFormComponent
+    A3LoginFormComponent,
+    CreateResourceComponent,
+    DigitalSignComponent,
+    VerifyResourceComponent,
+    DigitalSignVerifyComponent
   ],
   imports: [
     BrowserModule,
