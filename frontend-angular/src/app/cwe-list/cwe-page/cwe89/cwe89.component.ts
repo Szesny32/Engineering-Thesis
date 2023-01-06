@@ -42,16 +42,10 @@ export class Cwe89Component implements OnInit {
       if(this.password == "'OR 1=1;-- "){
         this.selectedLevel = 2;
       }
-
     }
-
-
-
-  
   }
-
-
 }
+
 
 export interface User{
   id: number;

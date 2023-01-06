@@ -1,1 +1,50 @@
-<p>page-a3 works!</p>
+<div class="assistantPanel">
+    <div class="dialog">
+        <!---->
+        <div *ngIf="selectedLevel==0">
+            <div class="text">Clear</div>
+        </div>
+        <!---->
+        <div *ngIf="selectedLevel==1">
+            <div class="text">base64</div>
+        </div>
+        <!---->
+        <div *ngIf="selectedLevel==2">
+            <div class="text">sha-256</div>
+        </div>
+        <!---->
+        <div *ngIf="selectedLevel==3">
+            <div class="text">salt+sha-256</div>
+        </div>
+    </div>
+    <!---->
+    <div class="rightPanel">
+        <div class="assistant">
+            <img src="/assets/images/ass2.png">
+        </div>
+        <div class="menu">
+            <button *ngFor="let number of [0,1,2,3]; let i = index"
+                [ngClass]="i==selectedLevel? 'circleSet' : 'circle'" (click)="setDialog(i)"></button>
+        </div>
+    </div>
+</div>
+
+<br><br>
+
+
+
+
+
+<table  cellpadding="10" cellspacing="0" class="centered-table" >
+    <tr>
+        <td>
+            <app-a3-login-form
+                [selectedLevel]="selectedLevel"
+                (response)="updateUser($event)">
+        </app-a3-login-form>
+        </td>
+    </tr>
+    <tr>
+        <td style => {{user}}</td>
+    </tr>
+</table>

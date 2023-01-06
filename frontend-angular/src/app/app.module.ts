@@ -31,6 +31,7 @@ import { PageA7Component } from './action-panel/page-a7/page-a7.component';
 import { PageA8Component } from './action-panel/page-a8/page-a8.component';
 import { PageA9Component } from './action-panel/page-a9/page-a9.component';
 import { PageA10Component } from './action-panel/page-a10/page-a10.component';
+import { A3LoginFormComponent } from './action-panel/page-a3/a3-login-form/a3-login-form.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { PageA10Component } from './action-panel/page-a10/page-a10.component';
     PageA7Component,
     PageA8Component,
     PageA9Component,
-    PageA10Component
+    PageA10Component,
+    A3LoginFormComponent
   ],
   imports: [
     BrowserModule,

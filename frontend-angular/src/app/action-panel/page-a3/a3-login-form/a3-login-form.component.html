@@ -1,0 +1,10 @@
+<div>
+    <b>Log In</b><br><br>
+     <label for="login">login: </label><br>
+     <input id="login" [(ngModel)]="login"/> <br><br>
+     <label for="passwd">password: </label><br>
+     <input id="passwd" [(ngModel)]="password" type="password"/><br><br> 
+    
+     <button *ngIf="selectedLevel==0" (click)="signIn_injection()">login</button>
+     <button *ngIf="selectedLevel==1" (click)="signIn_injectionFree()">login</button>
+ </div>
