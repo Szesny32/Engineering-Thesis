@@ -1,6 +1,6 @@
 
 import { Component, OnInit } from '@angular/core';
-
+import { NgZone } from '@angular/core';
 
 @Component({
   selector: 'app-page-a7',
@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PageA7Component implements OnInit {
 
-  constructor() { }
+  constructor(private ngZone: NgZone) { }
 
   login: string =""
   userPin = "";
@@ -18,6 +18,7 @@ export class PageA7Component implements OnInit {
   checkedPin: string ="";
   
   n: number = 4;
+  _n: number= 4;
   combinations: number = 10000;
 
 
@@ -37,25 +38,56 @@ export class PageA7Component implements OnInit {
     }
   }
 
-  checkPin() {
+
+
+   async checkPin() {
     const startTime = Date.now();
     const progressBar = document.getElementById('progressBar') as HTMLProgressElement;
-    //const currentPin = document.getElementById('currentPin') as HTMLSpanElement;
     progressBar.value = 0;
-    for (let i = 0; i <= this.combinations-1; i++) {
+    progressBar.max = this.combinations;
+
+    const chunkSize = 10000;
+    for (let i = 0; i <= this.combinations-1; i += chunkSize) {
       progressBar.value = i;
-      this.checkedPin = i.toString().padStart(this.n, '0');
-      if (this.isValidPin(this.checkedPin )) {
+      await new Promise(resolve => {
+        setInterval(resolve, 1); 
+      });
+      
+        if (this.checkPinChunk(i, i + chunkSize, startTime)) {
+          return;
+        }
+    }
+  }
+
+delay(){
+  return new Promise(resolve => {
+    setInterval(resolve, 1); 
+  });
+}
+
+
+
+  
+  
+    checkPinChunk(start: number, end: number, startTime: number) {
+      
+    for (let i = start; i < end; i++) {
+      let pin = i.toString().padStart(this.n, '0');
+      this.checkedPin = pin;
+      if (this.isValidPin(pin)) {
         const endTime = Date.now();
-        (endTime-startTime);
         this.addMessage(`Znaleziono poprawny PIN: ${this.checkedPin }`);
         this.addMessage(`Atak zakończono po ${endTime-startTime} ms`);
-        break;
+        return true;
       } else {
         this.addMessage(`Niepowodzenie dla PIN: ${this.checkedPin }`);
       }
     }
+    return false;
   }
+
+
+
 
 
   addMessage(message: string) {
@@ -69,6 +101,8 @@ export class PageA7Component implements OnInit {
 
 
   generatePin(){
+    this.userPin ="";
+    this.n = this._n; 
     this.combinations = Math.pow(10,this.n);
     let newPin = '';
     for (let i = 0; i < this.n; i++) {

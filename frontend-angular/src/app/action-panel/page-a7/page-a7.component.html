@@ -32,14 +32,14 @@ harcoded password
 </div>
 
 <br>
-<input type="text" [(ngModel)]="n">
+<input type="text" [(ngModel)]="_n">
 <button (click)="generatePin()">Generate</button>
 <br>
 
 
 <button (click)="checkPin()">Testuj PIN-y</button>
 
-<progress id="progressBar" max="{{combinations}}" value="0"></progress>
+<progress id="progressBar" max="40" value="0"></progress>
 
 
 
