@@ -1,5 +1,6 @@
-import { Time } from '@angular/common';
+
 import { Component, OnInit } from '@angular/core';
+
 
 @Component({
   selector: 'app-page-a7',
@@ -17,6 +18,7 @@ export class PageA7Component implements OnInit {
   checkedPin: string ="";
   
   n: number = 4;
+  combinations: number = 10000;
 
 
 
@@ -40,18 +42,17 @@ export class PageA7Component implements OnInit {
     const progressBar = document.getElementById('progressBar') as HTMLProgressElement;
     //const currentPin = document.getElementById('currentPin') as HTMLSpanElement;
     progressBar.value = 0;
-    for (let i = 0; i <= 9999; i++) {
+    for (let i = 0; i <= this.combinations-1; i++) {
       progressBar.value = i;
-      let pin = i.toString().padStart(4, '0');
-      this.checkedPin = pin;
-      if (this.isValidPin(pin)) {
+      this.checkedPin = i.toString().padStart(this.n, '0');
+      if (this.isValidPin(this.checkedPin )) {
         const endTime = Date.now();
         (endTime-startTime);
-        this.addMessage(`Znaleziono poprawny PIN: ${pin}`);
+        this.addMessage(`Znaleziono poprawny PIN: ${this.checkedPin }`);
         this.addMessage(`Atak zakończono po ${endTime-startTime} ms`);
         break;
       } else {
-        this.addMessage(`Niepowodzenie dla PIN: ${pin}`);
+        this.addMessage(`Niepowodzenie dla PIN: ${this.checkedPin }`);
       }
     }
   }
@@ -68,6 +69,7 @@ export class PageA7Component implements OnInit {
 
 
   generatePin(){
+    this.combinations = Math.pow(10,this.n);
     let newPin = '';
     for (let i = 0; i < this.n; i++) {
       newPin += Math.floor(Math.random() * 10);

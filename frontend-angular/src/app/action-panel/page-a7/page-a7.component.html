@@ -39,7 +39,10 @@ harcoded password
 
 <button (click)="checkPin()">Testuj PIN-y</button>
 
-<progress id="progressBar" max="10000" value="0"></progress>
+<progress id="progressBar" max="{{combinations}}" value="0"></progress>
+
+
+
 <div id="currentPinContainer">
     Aktualny PIN: {{checkedPin}}
 </div>
