@@ -48,12 +48,10 @@ export class PageA7Component implements OnInit {
 
     const chunkSize = 10000;
     for (let i = 0; i <= this.combinations-1; i += chunkSize) {
-      progressBar.value = i;
-      await new Promise(resolve => {
-        setInterval(resolve, 1); 
-      });
-      
+      progressBar.value = i +chunkSize;
+      await this.delay();
         if (this.checkPinChunk(i, i + chunkSize, startTime)) {
+          progressBar.value = progressBar.max;
           return;
         }
     }

@@ -1,8 +1,6 @@
-pin
 
-harcoded password
 
-{{pin}}
+<br>
 
 <br>
 <input type="text" [value]="userPin" readonly>
@@ -32,22 +30,38 @@ harcoded password
 </div>
 
 <br>
-<input type="text" [(ngModel)]="_n">
-<button (click)="generatePin()">Generate</button>
+
 <br>
+Current PIN : {{pin}} <br>
+<select id="combinations" name="combinations" [(ngModel)]="_n">
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+</select>
+
+<button class="generate-button" (click)="generatePin()">Generate new</button>
+        
+<br><br>
+
+<br>
+  
 
 
-<button (click)="checkPin()">Testuj PIN-y</button>
 
-<progress id="progressBar" max="40" value="0"></progress>
-
-
-
-<div id="currentPinContainer">
-    Aktualny PIN: {{checkedPin}}
+<div style ="display: flex; align-items: center; justify-content: center;">
+    <div>
+        <div class="console">
+            <p *ngFor="let message of messages">{{ message }}</p>
+        </div>
+    </div>
 </div>
-
-<div class="assistantPanel">
-    <div class="dialog">
-    <p *ngFor="let message of messages">{{ message }}</p>
-</div></div>
+<div style ="display: flex; align-items: center; justify-content: center;">
+    <div style =" display: inline-block">
+        <progress class="attack-progress" id="progressBar" max="40" value="0"></progress>
+    </div>
+    <div style =" display: inline-block">
+        <button class="attack-button" (click)="checkPin()">Atak</button>
+    </div>
+</div>
