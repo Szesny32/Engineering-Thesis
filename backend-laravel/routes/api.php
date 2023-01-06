@@ -39,7 +39,7 @@ Route::post('/A3-injection-free', [A3::class, 'login_injection_free']);
 Route::post('/A3-getUsers', [A3::class, 'getUsers']);
 Route::post('/A8-generateNewKeyPair', [A8::class, 'generateNewKeyPair']);
 Route::post('/A8-sign', [A8::class, 'sign']);
-
+Route::post('/A8-checkSignature', [A8::class, 'checkSignature']);
 
 
 Route::post('/register', [AuthController::class, 'register']);

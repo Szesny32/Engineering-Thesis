@@ -10,7 +10,7 @@ class A8_SignedResource extends Model
     use HasFactory;
     protected $fillable = [
         'resource',
-        'digital_sign',
+        'signature',
         'public_key_id',  
     ];
 }

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('keys_id');
             $table->foreign('keys_id')->references('id')->on('a8__keys');
             $table->text('resource');
-            $table->binary('sign');
+            $table->text('signature');
         });
     }
 

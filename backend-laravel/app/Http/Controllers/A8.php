@@ -58,12 +58,27 @@ class A8 extends Controller
         A8_SignedResource::insert([
             'keys_id' =>  $key['id'],
             'resource' => $fields['resource'],
-            'sign' => $signature
+            'signature' => base64_encode($signature)
         ]);
 
         return $key['public_key'];
 
     }
+
+    public function checkSignature(Request $request){
+        $fields = $request->validate([
+            'resource'=> 'required|string',
+            'signature'=> 'required|string',
+            'public_key'=> 'required|string'
+        ]);
+        //return $fields['signature'];
+
+
+        $signature = base64_decode($fields['signature']);
+        //return $signature;
+        return [ 'signatureIsValid' => openssl_verify($fields['resource'], $signature, $fields['public_key']) == 1];
+    }
+
 
 
 }
