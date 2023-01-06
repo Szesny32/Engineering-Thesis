@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\A1;
 use App\Http\Controllers\A2;
+use App\Http\Controllers\A3;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CWEController;
 use App\Http\Controllers\Controller;
@@ -32,6 +33,9 @@ Route::post('/A1-expireSession', [A1::class, 'expireSession']);
 Route::post('/A2-getUsers', [A2::class, 'getUsers']);
 Route::post('/A2-logIn', [A2::class, 'logIn']);
 Route::post('/A2-dictionary', [A2::class, 'getDictionary']);
+Route::post('/A3-injection', [A3::class, 'login_injection']);
+Route::post('/A3-injection-free', [A3::class, 'login_injection_free']);
+Route::post('/A3-getUsers', [A3::class, 'getUsers']);
 
 
 

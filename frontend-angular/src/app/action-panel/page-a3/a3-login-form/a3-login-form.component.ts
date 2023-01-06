@@ -16,18 +16,21 @@ export class A3LoginFormComponent implements OnInit {
   @Output() response = new EventEmitter<UserA1_b>();
   @Input() selectedLevel: number;
 
+
   ngOnInit(): void {
   }
   signIn_injectionFree(): void{
     this.service.signIn_injectionFree(this.login, this.password) 
     .subscribe((user: UserA1_b) => {
       this.response.emit(user);
+      
     });
   }
   signIn_injection(): void{
     this.service.signIn_injection(this.login, this.password) 
     .subscribe((user: UserA1_b) => {
       this.response.emit(user);
+      console.log(user);
     });
   }
 }

@@ -2,7 +2,7 @@
     <div class="dialog">
         <!---->
         <div *ngIf="selectedLevel==0">
-            <div class="text">Clear</div>
+            <div class="text">JA CHCE TU JESZZE UNIONA - z produktami</div>
         </div>
         <!---->
         <div *ngIf="selectedLevel==1">
@@ -44,7 +44,20 @@
         </app-a3-login-form>
         </td>
     </tr>
+
     <tr>
-        <td style => {{user}}</td>
+        <app-a1-users-list 
+            [id]="user.id"
+            [users]="users">
+        </app-a1-users-list>
+    </tr>
+
+    <tr>
+
+            <td *ngIf="(user==null || user.id==0) && selectedLevel == 0">Please enter password ('OR 1=1;-- )</td>
+            <td *ngIf="(user==null || user.id==0) && selectedLevel != 0">Please enter password </td>
+            <td *ngIf="(user!=null && user.id!=0)">Welcome {{user.login}} | {{user.email}}</td>
+ 
+    
     </tr>
 </table>

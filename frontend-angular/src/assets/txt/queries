@@ -44,3 +44,23 @@ VALUES
   //myspace1
   //password
   //password
+
+
+
+
+
+  ///212121
+  //123654
+  //qazwsx
+  //asd123
+  //123456abc
+  
+
+
+INSERT INTO `a3__users` (`id`,`login`,`e-mail`,`passwd`)
+VALUES
+  (1,"Saunders","augue.eu.tempor@google.ca","212121"),
+  (2,"George","nibh.phasellus.nulla@protonmail.ca","123654"),
+  (3,"Workman","mollis.non.cursus@protonmail.ca","qazwsx"),
+  (4,"Crawford","ornare.lectus.justo@hotmail.ca","asd123"),
+  (5,"Mathis","penatibus.et@hotmail.couk","123456abc");
