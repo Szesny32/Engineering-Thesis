@@ -1,0 +1,45 @@
+<div class="profile-panel">
+    <table>
+        <tr>
+            <td class="fill">
+            </td>
+            <td>
+                <div class="profile">
+                    <div class="profile-picture">
+                        <img src="https://i.pinimg.com/736x/cf/8d/d2/cf8dd2106266a7e3411a26411a26cf47.jpg" alt="Profile picture">
+                      </div>
+                      <div class="profile-info">
+                        <div class="profile-name">William Butcher</div>
+                        <div class="profile-dob">16.12.1976</div>
+                        <div class="profile-age">(46 lat)</div>
+                      </div>
+              </div>
+            </td>
+            <td class="fill">
+            </td>
+        </tr>
+    </table>
+    
+</div>
+
+
+  <div class="menu">
+    <table>
+        <tr>
+            <td>
+
+                <button class="menu-item" [class]="selectedPage === 1 ? 'menu-item-selected' : 'menu-item'" (click)="selectPage(1)">Posty</button>
+            </td>
+            <td>
+                <button class="menu-item" [class]="selectedPage === 2 ? 'menu-item-selected' : 'menu-item'" (click)="selectPage(2)">Informacje</button>
+            </td>
+            <td>
+                <button class="menu-item" [class]="selectedPage === 3 ? 'menu-item-selected' : 'menu-item'" (click)="selectPage(3)">Znajomi</button>
+            </td>
+            <td>
+    
+            </td>
+        </tr>
+    </table>
+    
+</div>

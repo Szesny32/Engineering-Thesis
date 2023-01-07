@@ -36,6 +36,7 @@ import { CreateResourceComponent } from './action-panel/page-a8/create-resource/
 import { DigitalSignComponent } from './action-panel/page-a8/digital-sign/digital-sign.component';
 import { VerifyResourceComponent } from './action-panel/page-a8/verify-resource/verify-resource.component';
 import { DigitalSignVerifyComponent } from './action-panel/page-a8/digital-sign-verify/digital-sign-verify.component';
+import { UserProfileComponent } from './action-panel/page-a4/user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,8 @@ import { DigitalSignVerifyComponent } from './action-panel/page-a8/digital-sign-
     CreateResourceComponent,
     DigitalSignComponent,
     VerifyResourceComponent,
-    DigitalSignVerifyComponent
+    DigitalSignVerifyComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,
