@@ -1,1 +1,8 @@
-<p>digital-sign-verify works!</p>
+
+<label for="signature">Podpis: </label><br>
+<textarea [(ngModel)]="signature" style="width:500px; height:100px;" placeholder="Sprawdź podpis cyfrowy."></textarea>
+<br><br>
+<label for="public_key">Klucz publiczny: </label><br>
+<textarea [(ngModel)]="public_key" style="width:500px; height:100px;" placeholder="Podaj klucz publiczny."></textarea>
+<br><br><br><br>
+<button style="width:500px; height:50px;" (click)="checkSign()">Sprawdź podpis</button>

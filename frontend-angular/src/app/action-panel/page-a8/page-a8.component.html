@@ -1,12 +1,14 @@
 <table >
     <tr>
         <td>
-            <app-create-resource>
+            <app-create-resource
+                (resourceEmitter)="updateResource($event)">
             </app-create-resource>
         </td>
         <td> 
             <app-digital-sign
-                [keys]="keys">
+                [keys]="keys"
+                (keyEmitter)="signResource($event)">
             </app-digital-sign>
         </td>
     </tr>
@@ -15,12 +17,20 @@
 <table>
     <tr>
         <td>
-            <app-verify-resource></app-verify-resource>
+            <app-verify-resource
+                [resource]="signature.resource"
+                (resourceEmitter)="updateResource($event)">
+            </app-verify-resource>
         </td>
         <td> 
-            <app-digital-sign-verify></app-digital-sign-verify>
+            <app-digital-sign-verify
+                [public_key]="signature.public_key"
+                [signature]="signature.signature"
+                (requestEmitter)="checkSignature($event)">
+            </app-digital-sign-verify>
         </td>
     </tr>
 </table>
 
-
+{{signConfirmation.signatureIsValid}}
+<br>

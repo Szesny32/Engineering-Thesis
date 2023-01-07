@@ -48,19 +48,18 @@ class A8 extends Controller
 
 
         openssl_sign( $fields['resource'], $signature, $key['private_key']);
-
-        if ($signature === false) {
-            $error = error_get_last();
-            return $error['message'];
-        }
-
+        
         A8_SignedResource::insert([
             'keys_id' =>  $key['id'],
             'resource' => $fields['resource'],
             'signature' => base64_encode($signature)
         ]);
 
-        return $key['public_key'];
+        return [
+            'resource' => $fields['resource'],
+            'public_key'=> $key['public_key'], 
+            'signature'=> base64_encode($signature)
+        ];
 
     }
 
