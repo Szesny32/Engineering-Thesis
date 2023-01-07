@@ -1,1 +1,29 @@
-<p>page-a10 works!</p>
+<div class="page-panel">
+    <div class="storage">
+        <table>
+            <tr>
+                <td>Nazwa pliku</td>
+                <td>Pobieranie</td>
+            </tr>
+            <tr *ngFor="let file of files">
+                <td> 
+                    <p>{{file.filename}}</p>
+                </td>
+                <td>
+                    <button (click)="downloadFile(file.id)">Download</button>    
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="action-add-new">
+        <label for="name">Nazwa pliku: </label>
+        <input type="text" id="name" name="name">
+        <br>
+        <label for="URL">Proszę podać adres URL: </label>
+        <input type="text" id="URL" name="URL">
+
+        <button>Upload</button>    
+    </div>
+</div>
+

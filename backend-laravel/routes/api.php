@@ -4,6 +4,7 @@ use App\Http\Controllers\A1;
 use App\Http\Controllers\A2;
 use App\Http\Controllers\A3;
 use App\Http\Controllers\A8;
+use App\Http\Controllers\A10;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CWEController;
 use App\Http\Controllers\Controller;
@@ -41,6 +42,9 @@ Route::post('/A8-getKeys', [A8::class, 'getKeys']);
 Route::post('/A8-generateNewKeyPair', [A8::class, 'generateNewKeyPair']);
 Route::post('/A8-sign', [A8::class, 'sign']);
 Route::post('/A8-checkSignature', [A8::class, 'checkSignature']);
+Route::post('/A10-upload', [A10::class, 'upload']);
+Route::post('/A10-getStorage', [A10::class, 'getStorage']);
+Route::post('/A10-downloadFile', [A10::class, 'downloadFile']);
 
 
 Route::post('/register', [AuthController::class, 'register']);
