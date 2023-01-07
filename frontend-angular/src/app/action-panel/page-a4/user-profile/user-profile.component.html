@@ -1,45 +1,73 @@
 <div class="profile-panel">
     <table>
         <tr>
-            <td class="fill">
-            </td>
+            <td class="fill"></td>
             <td>
                 <div class="profile">
                     <div class="profile-picture">
                         <img src="https://i.pinimg.com/736x/cf/8d/d2/cf8dd2106266a7e3411a26411a26cf47.jpg" alt="Profile picture">
                       </div>
                       <div class="profile-info">
-                        <div class="profile-name">William Butcher</div>
-                        <div class="profile-dob">16.12.1976</div>
-                        <div class="profile-age">(46 lat)</div>
+                        <div class="profile-important-font ">{{user.name}} {{user.surname}}</div>
+                        <div class="profile-normally-important-font">{{user.birthday}}</div>
+                        <div class="profile-less-imporant-font">({{user.age}} y/o)</div>
                       </div>
               </div>
             </td>
-            <td class="fill">
-            </td>
+            <td class="fill"></td>
         </tr>
     </table>
-    
 </div>
-
-
-  <div class="menu">
+<div class="menu">
     <table>
         <tr>
-            <td>
-
-                <button class="menu-item" [class]="selectedPage === 1 ? 'menu-item-selected' : 'menu-item'" (click)="selectPage(1)">Posty</button>
-            </td>
-            <td>
-                <button class="menu-item" [class]="selectedPage === 2 ? 'menu-item-selected' : 'menu-item'" (click)="selectPage(2)">Informacje</button>
-            </td>
-            <td>
-                <button class="menu-item" [class]="selectedPage === 3 ? 'menu-item-selected' : 'menu-item'" (click)="selectPage(3)">Znajomi</button>
-            </td>
-            <td>
-    
-            </td>
+            <td><button class="menu-item" [class]="selectedPage === 1 ? 'menu-item-selected' : 'menu-item'" (click)="selectPage(1)">Posty</button></td>
+            <td><button class="menu-item" [class]="selectedPage === 2 ? 'menu-item-selected' : 'menu-item'" (click)="selectPage(2)">Informacje</button></td>
+            <td><button class="menu-item" [class]="selectedPage === 3 ? 'menu-item-selected' : 'menu-item'" (click)="selectPage(3)">Znajomi</button></td>
+            <td></td>
         </tr>
     </table>
-    
+</div>
+
+<div class="user-info">
+    <div *ngIf="selectedPage === 1">
+        <table class="user-posts">
+            <tr class="post" *ngFor="let post of userData.userPosts">
+            <p class="post-content">{{post.post}}</p>
+            <div class="post-photo"> <img src="{{post.photoURL}}" alt="Post photo" ></div>
+            <p class="post-likes">{{post.likes}} likes</p>
+            </tr>
+        </table>
+    </div>
+
+    <div *ngIf="selectedPage === 2">
+        <br><br>
+        <table class="user-details">
+            <tr class="detail-key">Education: <p class="detail-value">{{userData.userDetails.education}}</p></tr>
+            <tr class="detail-key">Profession: <p class="detail-value">{{userData.userDetails.profession}}</p></tr>
+            <tr class="detail-key">Birthplace: <p class="detail-value">{{userData.userDetails.birthplace}}</p></tr>
+            <tr class="detail-key">Country: <p class="detail-value">{{userData.userDetails.country}}</p></tr>
+            <tr class="detail-key">City: <p class="detail-value">{{userData.userDetails.city}}</p></tr>
+            <tr class="detail-key">Activities:</tr>
+            <tr *ngFor="let hobby of userData.userDetails.activities">
+                <p class="detail-value">{{hobby.name}}</p>
+            </tr>
+        </table>
+    </div>
+
+    <div *ngIf="selectedPage === 3">
+        <table class="user-friends">
+            <tr *ngFor="let friend of userData.userRelationships">
+                <div class="mini-profile">
+                    <div class="mini-profile-picture">
+                        <img src={{friend.user.photoURL}} alt="Profile picture">
+                    </div>
+                    <div class="mini-profile-info">
+                        <div class="mini-profile-normally-important-font">{{friend.user.name}} {{friend.user.surname}}</div>
+                        <div class="mini-profile-less-imporant-font">{{friend.type}}</div>
+                    </div>
+                </div>
+            </tr>
+        </table>
+    </div>    
 </div>
