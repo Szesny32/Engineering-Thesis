@@ -78,9 +78,9 @@ export class UserProfileComponent implements OnInit {
 
   userDetails: UserDetails =
   {
-    education: "",
+    education: "Royal School of Dunkeld",
     profession: "FBSA | CIA | Royal Marines",
-    birthplace: "United Kingdom",
+    birthplace: "Dunkeld",
     country: "United States of America",
     city: "New York",
     activities: this.userActivities
@@ -95,9 +95,19 @@ export class UserProfileComponent implements OnInit {
       likes: 53
     },
     {
+      post:"Terror and his new friend!",
+      photoURL: "https://img.ibxk.com.br/2020/09/18/18132317688167.jpg",
+      likes: 47
+    },
+    {
       post: "Never Go Into Shark-Infested Waters Without Chum.",
       photoURL: "https://static1.cbrimages.com/wordpress/wp-content/uploads/2019/11/BILLY-BUTCHER-Hughie.jpg?q=50&fit=crop&w=750&dpr=1.5",
       likes: 27
+    },
+    {
+      post: "Our 13th anniversary! And to think that we met in elementary school...",
+      photoURL: "https://i.pinimg.com/564x/95/c3/51/95c3517dd0584c504575e51898bc51d5.jpg",
+      likes: 123
     }
   ];
 
@@ -112,8 +122,8 @@ export class UserProfileComponent implements OnInit {
     id: 1, 
     name: "William",
     surname: "Butcher", 
-    birthday: "16.12.1976", 
-    age : 46, 
+    birthday: "16.12.1996", 
+    age : 26, 
     photoURL: "https://i.pinimg.com/736x/cf/8d/d2/cf8dd2106266a7e3411a26411a26cf47.jpg",
   };
 

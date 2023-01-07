@@ -37,6 +37,7 @@ import { DigitalSignComponent } from './action-panel/page-a8/digital-sign/digita
 import { VerifyResourceComponent } from './action-panel/page-a8/verify-resource/verify-resource.component';
 import { DigitalSignVerifyComponent } from './action-panel/page-a8/digital-sign-verify/digital-sign-verify.component';
 import { UserProfileComponent } from './action-panel/page-a4/user-profile/user-profile.component';
+import { PasswordChangeFormComponent } from './action-panel/page-a4/password-change-form/password-change-form.component';
 
 @NgModule({
   declarations: [
@@ -72,7 +73,8 @@ import { UserProfileComponent } from './action-panel/page-a4/user-profile/user-p
     DigitalSignComponent,
     VerifyResourceComponent,
     DigitalSignVerifyComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    PasswordChangeFormComponent
   ],
   imports: [
     BrowserModule,
