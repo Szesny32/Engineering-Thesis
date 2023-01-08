@@ -16,7 +16,12 @@ export class PageA9Component implements OnInit {
   }
   exceptionLogs: ExceptionLog[] = [];
   auditLogs: AuditLog[] = [];
-
+  
+  selectedLevel:number = 0;
+  setDialog(page: number){
+    this.selectedLevel = page;
+    
+  }
 
   getAuditionLogs(){
     this.service.getAuditionLogs().subscribe(logs => this.auditLogs = logs);

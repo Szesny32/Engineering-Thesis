@@ -41,7 +41,6 @@ export class PageA5Component implements OnInit {
     this.output = "";
     this.runOp = 0;
     this.configOp= 0;
-    
   }
 
 

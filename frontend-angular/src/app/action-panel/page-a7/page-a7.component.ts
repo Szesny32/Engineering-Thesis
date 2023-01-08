@@ -22,6 +22,22 @@ export class PageA7Component implements OnInit {
   combinations: number = 10000;
 
 
+  status: number = 0;
+  enterPin(){
+    this.status = this.isValidPin(this.userPin)? 1 : 2;
+  }
+
+
+  selectedLevel:number = 0;
+  setDialog(page: number){
+    this.selectedLevel = page;
+    this.status=0;
+    
+  }
+
+
+
+
 
 
   ngOnInit(): void {
@@ -29,6 +45,7 @@ export class PageA7Component implements OnInit {
   }
 
   type(op: number) {
+    this.status=0;
     if (op >= 0 && op <= 9 && this.userPin.length < this.n) 
       this.userPin += op.toString();
      else if (op === -1 && this.userPin.length > 0) {
@@ -41,7 +58,7 @@ export class PageA7Component implements OnInit {
 
 
 
-   async checkPin() {
+   async attackPin() {
     const startTime = Date.now();
     const progressBar = document.getElementById('progressBar') as HTMLProgressElement;
     progressBar.value = 0;
@@ -51,8 +68,9 @@ export class PageA7Component implements OnInit {
     for (let i = 0; i <= this.combinations-1; i += chunkSize) {
       progressBar.value = i +chunkSize;
       await this.delay(1);
-        if (this.checkPinChunk(i, i + chunkSize, startTime)) {
+        if (this.attackPinChunk(i, i + chunkSize, startTime)) {
           progressBar.value = progressBar.max;
+          this.typeAll(this.checkedPin);
           return;
         }
     }
@@ -68,7 +86,7 @@ delay(ms: number){
 
   
   
-    checkPinChunk(start: number, end: number, startTime: number) {
+  attackPinChunk(start: number, end: number, startTime: number) {
       
     for (let i = start; i < end; i++) {
       let pin = i.toString().padStart(this.n, '0');
@@ -99,16 +117,20 @@ delay(ms: number){
 
 
 
+
+
   generatePin(){
-    this.userPin ="";
+    this.status=0;
     this.n = this._n; 
     this.combinations = Math.pow(10,this.n);
     let newPin = '';
-    for (let i = 0; i < this.n; i++) {
+    newPin += (6 + Math.floor(Math.random() * 4));
+
+    for (let i = 1; i < this.n; i++) {
       newPin += Math.floor(Math.random() * 10);
     }
     this.pin = newPin;
-    this.typeAll(newPin);
+    
   }
 
   async typeAll(pin: string){
@@ -118,6 +140,8 @@ delay(ms: number){
       await this.delay(150);
       this.userPin+=pin.charAt(i);
     }
+    await this.delay(150);
+    this.enterPin();
   }
 
 

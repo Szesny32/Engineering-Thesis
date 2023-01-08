@@ -1,53 +1,65 @@
-
-
-<br>
-
-<br>
-<input type="text" [value]="userPin" readonly>
-
-<br>
-<br>
-
-<div>
-    <button class="pin-button" (click)="type(1)">1</button>
-    <button class="pin-button" (click)="type(2)">2</button>
-    <button class="pin-button" (click)="type(3)">3</button>
-</div>
-<div>
-    <button class="pin-button" (click)="type(4)">4</button>
-    <button class="pin-button" (click)="type(5)">5</button>
-    <button class="pin-button" (click)="type(6)">6</button>
-</div>
-<div>
-    <button class="pin-button" (click)="type(7)">7</button>
-    <button class="pin-button" (click)="type(8)">8</button>
-    <button class="pin-button" (click)="type(9)">9</button>
-</div>
-<div>
-    <button class="pin-button" (click)="type(10)">OK</button>
-    <button class="pin-button" (click)="type(0)">0</button>
-    <button class="pin-button" (click)="type(-1)">⌫</button>
+<div class="assistantPanel">
+    <div class="dialog">
+        <!---->
+        <div *ngIf="selectedLevel==0">
+            <div class="text">base64</div>
+        </div>
+        <!---->
+        <div *ngIf="selectedLevel==1">
+            <div class="text">sha-256</div>
+        </div>
+    </div>
+    <!---->
+    <div class="rightPanel">
+        <div class="assistant">
+            <img src="/assets/images/ass2.png">
+        </div>
+        <div class="menu">
+            <button *ngFor="let number of [0,1]; let i = index"
+                [ngClass]="i==selectedLevel? 'circleSet' : 'circle'" (click)="setDialog(i)"></button>
+        </div>
+    </div>
 </div>
 
-<br>
 
-<br>
-Current PIN : {{pin}} <br>
-<select id="combinations" name="combinations" [(ngModel)]="_n">
-    <option value="4">4</option>
-    <option value="5">5</option>
-    <option value="6">6</option>
-    <option value="7">7</option>
-    <option value="8">8</option>
-</select>
 
-<button class="generate-button" (click)="generatePin()">Generate new</button>
-        
-<br><br>
 
-<br>
-  
-
+<div class="pinLevel">
+    <br><br>
+    <div [ngClass]="{'pinDisplay-normal': status == 0, 'pinDisplay-good': status == 1, 'pinDisplay-bad': status == 2}">
+        <input type="text" [value]="userPin" readonly>
+    </div>
+    <br><br>
+    <div>
+        <button class="pin-button" (click)="type(1)">1</button>
+        <button class="pin-button" (click)="type(2)">2</button>
+        <button class="pin-button" (click)="type(3)">3</button>
+    </div>
+    <div>
+        <button class="pin-button" (click)="type(4)">4</button>
+        <button class="pin-button" (click)="type(5)">5</button>
+        <button class="pin-button" (click)="type(6)">6</button>
+    </div>
+    <div>
+        <button class="pin-button" (click)="type(7)">7</button>
+        <button class="pin-button" (click)="type(8)">8</button>
+        <button class="pin-button" (click)="type(9)">9</button>
+    </div>
+    <div>
+        <button class="pin-button" (click)="enterPin()">OK</button>
+        <button class="pin-button" (click)="type(0)">0</button>
+        <button class="pin-button" (click)="type(-1)">⌫</button>
+    </div>
+    <br><br>
+    <select id="combinations" name="combinations" [(ngModel)]="_n">
+        <option value="4" >4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+    </select>
+    <button class="generate-button" (click)="generatePin()">Generate new</button>  
+    <br><br><br> 
+</div>
 
 
 <div style ="display: flex; align-items: center; justify-content: center;">
@@ -62,6 +74,6 @@ Current PIN : {{pin}} <br>
         <progress class="attack-progress" id="progressBar" max="40" value="0"></progress>
     </div>
     <div style =" display: inline-block">
-        <button class="attack-button" (click)="checkPin()">Atak</button>
+        <button class="attack-button" (click)="attackPin()">Atak</button>
     </div>
 </div>

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('ip');
             $table->string('action');
-            $table->string('parameters');
+            $table->text('parameters');
             $table->string('event_type');
             $table->string('description');
             $table->timestamps();

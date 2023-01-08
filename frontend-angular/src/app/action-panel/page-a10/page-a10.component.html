@@ -1,5 +1,27 @@
-NOT SECURED
-<div class="page-panel">
+<div class="assistantPanel">
+    <div class="dialog">
+        <!---->
+        <div *ngIf="selectedLevel==0">
+            <div class="text">base64</div>
+        </div>
+        <!---->
+        <div *ngIf="selectedLevel==1">
+            <div class="text">sha-256</div>
+        </div>
+    </div>
+    <!---->
+    <div class="rightPanel">
+        <div class="assistant">
+            <img src="/assets/images/ass2.png">
+        </div>
+        <div class="menu">
+            <button *ngFor="let number of [0,1]; let i = index"
+                [ngClass]="i==selectedLevel? 'circleSet' : 'circle'" (click)="setDialog(i)"></button>
+        </div>
+    </div>
+</div>
+<br><br><br><br>
+<div class="page-panel" *ngIf="selectedLevel==0">
     <div class="storage">
         <table>
             <tr>
@@ -16,7 +38,6 @@ NOT SECURED
             </tr>
         </table>
     </div>
-
     <div class="action-add-new">
         <label for="name">Nazwa pliku: </label>
         <input type="text" id="name" name="name" [(ngModel)]="filename">
@@ -27,11 +48,8 @@ NOT SECURED
         <button (click)="upload(filename, url, false)">Upload</button>    
         <p>{{response}}</p>
     </div>
-<br>
-<br>
-SECURED
-
-<div class="page-panel">
+</div>
+<div class="page-panel" *ngIf="selectedLevel==1">
     <div class="storage">
         <table>
             <tr>

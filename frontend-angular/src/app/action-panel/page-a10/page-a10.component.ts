@@ -20,6 +20,12 @@ export class PageA10Component implements OnInit {
   ngOnInit(): void {
     this.getStorage();
   }
+  
+  selectedLevel:number = 0;
+  setDialog(page: number){
+    this.selectedLevel = page;
+    
+  }
 
   getStorage(){
     this.service.getStorage(this.user_id).subscribe(files => this.files = files);

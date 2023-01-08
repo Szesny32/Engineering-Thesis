@@ -16,6 +16,8 @@ export class PageA8Component implements OnInit {
   response: string ="";
   signature: Signature = {resource: "", signature: "", public_key: ""};
   signConfirmation: SignConfirmation = {signatureIsValid: false};
+
+
   ngOnInit(): void {
     this.getKeys();
     console.log(this.keys); 
@@ -24,9 +26,18 @@ export class PageA8Component implements OnInit {
     this.service.getKeys().subscribe(keys=>this.keys = keys);
   }
 
-  signResource(key: Key){
-    
 
+
+  
+  selectedLevel:number = 0;
+  setDialog(page: number){
+    this.selectedLevel = page;
+    
+  }
+
+
+  signResource(key: Key){
+  
     this.activeKey = key;
     if(key.id == 0)
       this.response ="Nie wybrano klucza.";
@@ -35,6 +46,7 @@ export class PageA8Component implements OnInit {
     else{
       this.service.sign(this.activeKey.id, this.resource).subscribe(signature=> this.signature=signature);
       this.response = "";
+      this.setDialog(1);
     }
       
 

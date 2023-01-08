@@ -1,36 +1,64 @@
-<table >
-    <tr>
-        <td>
-            <app-create-resource
-                (resourceEmitter)="updateResource($event)">
-            </app-create-resource>
-        </td>
-        <td> 
-            <app-digital-sign
-                [keys]="keys"
-                (keyEmitter)="signResource($event)">
-            </app-digital-sign>
-        </td>
-    </tr>
-</table>
+<div class="assistantPanel">
+    <div class="dialog">
+        <!---->
+        <div *ngIf="selectedLevel==0">
+            <div class="text">base64</div>
+        </div>
+        <!---->
+        <div *ngIf="selectedLevel==1">
+            <div class="text">sha-256</div>
+        </div>
+    </div>
+    <!---->
+    <div class="rightPanel">
+        <div class="assistant">
+            <img src="/assets/images/ass2.png">
+        </div>
+        <div class="menu">
+            <button *ngFor="let number of [0,1]; let i = index"
+                [ngClass]="i==selectedLevel? 'circleSet' : 'circle'" (click)="setDialog(i)"></button>
+        </div>
+    </div>
+</div>
+<div *ngIf="selectedLevel==0" style ="text-align: center;">
+    <table style=" margin: 0 auto;">
+        <tr>
+            <td>
+                <app-create-resource
+                    (resourceEmitter)="updateResource($event)">
+                </app-create-resource>
+            </td>
+            <td> 
+                <app-digital-sign
+                    [keys]="keys"
+                    (keyEmitter)="signResource($event)">
+                </app-digital-sign>
+            </td>
+        </tr>
+    </table>
+</div>
 
-<table>
-    <tr>
-        <td>
-            <app-verify-resource
-                [resource]="signature.resource"
-                (resourceEmitter)="updateResource($event)">
-            </app-verify-resource>
-        </td>
-        <td> 
-            <app-digital-sign-verify
-                [public_key]="signature.public_key"
-                [signature]="signature.signature"
-                (requestEmitter)="checkSignature($event)">
-            </app-digital-sign-verify>
-        </td>
-    </tr>
-</table>
+
+<div *ngIf="selectedLevel==1" style ="text-align: center;">
+    <table style=" margin: 0 auto;">
+        <tr>
+            <td>
+                <app-verify-resource
+                    [resource]="signature.resource"
+                    (resourceEmitter)="updateResource($event)">
+                </app-verify-resource>
+            </td>
+            <td> 
+                <app-digital-sign-verify
+                    [public_key]="signature.public_key"
+                    [signature]="signature.signature"
+                    (requestEmitter)="checkSignature($event)">
+                </app-digital-sign-verify>
+            </td>
+        </tr>
+    </table>
+</div>
+{{response}}
 
 {{signConfirmation.signatureIsValid}}
 <br>
