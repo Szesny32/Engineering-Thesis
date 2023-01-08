@@ -1,3 +1,4 @@
+NOT SECURED
 <div class="page-panel">
     <div class="storage">
         <table>
@@ -10,7 +11,7 @@
                     <p>{{file.filename}}</p>
                 </td>
                 <td>
-                    <button (click)="downloadFile(file.id)">Download</button>    
+                    <button (click)="downloadFile(file)">Download</button>    
                 </td>
             </tr>
         </table>
@@ -18,12 +19,44 @@
 
     <div class="action-add-new">
         <label for="name">Nazwa pliku: </label>
-        <input type="text" id="name" name="name">
+        <input type="text" id="name" name="name" [(ngModel)]="filename">
         <br>
         <label for="URL">Proszę podać adres URL: </label>
-        <input type="text" id="URL" name="URL">
+        <input type="text" id="URL" name="URL" [(ngModel)]="url">
 
-        <button>Upload</button>    
+        <button (click)="upload(filename, url, false)">Upload</button>    
+        <p>{{response}}</p>
+    </div>
+<br>
+<br>
+SECURED
+
+<div class="page-panel">
+    <div class="storage">
+        <table>
+            <tr>
+                <td>Nazwa pliku</td>
+                <td>Pobieranie</td>
+            </tr>
+            <tr *ngFor="let file of files">
+                <td> 
+                    <p>{{file.filename}}</p>
+                </td>
+                <td>
+                    <button (click)="downloadFile(file)">Download</button>    
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="action-add-new">
+        <label for="name">Nazwa pliku: </label>
+        <input type="text" id="name" name="name" [(ngModel)]="filename">
+        <br>
+        <label for="URL">Proszę podać adres URL: </label>
+        <input type="text" id="URL" name="URL" [(ngModel)]="url">
+
+        <button (click)="upload(filename, url, true)">Upload</button>    
+        <p>{{response}}</p>
     </div>
 </div>
 

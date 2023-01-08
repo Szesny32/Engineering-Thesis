@@ -1,67 +1,126 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Controllers\A9;
 use App\Models\A10_UserStorage;
+use App\Models\A9_ExceptionLog;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
+use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 
-class A10 extends Controller
+class A10 extends Controller 
 {
     public function upload(Request $request){
+        try {
         $fields = $request->validate([
             'filename' =>'required|string',
             'url'=> 'required|string',
             'user_id'=> 'required|integer'
         ]);
+        } catch (ValidationException $e) {
+            return response()->json(A9::validationLog($e, $request, "A10::upload"), 400);
+        }
 
-        return A10_UserStorage::insert([
+        if ($fields['url'] !='C:/Users/Szesny/Desktop/etc/passwd.txt') 
+            return response()->json(A9::auditLog($request, "A10::upload", "illegal move","user tried something else"), 400);
+
+        $filename = $fields['filename'];
+        $pathinfo = pathinfo($filename);
+
+        if (!array_key_exists('extension', $pathinfo)) 
+            return response()->json(A9::auditLog($request, "A10::upload", "Unsupported file extension","array_key_exists('extension', \$pathinfo) is false"), 400);
+     
+        $extension = $pathinfo['extension'];
+        if ($extension != 'jpg' && $extension != 'png' && $extension != 'txt') {
+            return response()->json(A9::auditLog($request, "A10::upload", "Unsupported file extension","(\$extension != 'jpg' && \$extension != 'png' && \$extension != 'txt') "), 400);
+        }
+
+         A10_UserStorage::insert([
             'filename' => $fields['filename'],
             'url' => $fields['url'],
             'user_id' => $fields['user_id'],
         ]);
+
+        return response()->json(A9::auditLog($request, "A10::upload", "success","successfully uploaded data"), 200);
     }
+
+
+
+
+
+    public function upload_secure(Request $request){
+        try{
+            $fields = $request->validate([
+                'filename' =>'required|string',
+                'url'=> 'required|url',
+                'user_id'=> 'required|integer'
+            ]);
+        } catch (ValidationException $e) {
+             return response()->json(A9::validationLog($e, $request, "A10::upload_secure"), 400);
+        }
+
+  
+        $filename = $fields['filename'];
+        $pathinfo = pathinfo($filename);
+
+        if (!array_key_exists('extension', $pathinfo)) 
+            return response()->json(A9::auditLog($request, "A10::upload", "Unsupported file extension","array_key_exists('extension', \$pathinfo) is false"), 400);
+     
+        $extension = $pathinfo['extension'];
+        if ($extension != 'jpg' && $extension != 'png' && $extension != 'txt') {
+            return response()->json(A9::auditLog($request, "A10::upload", "Unsupported file extension","(\$extension != 'jpg' && \$extension != 'png' && \$extension != 'txt') "), 400);
+        }
+
+        A10_UserStorage::insert([
+            'filename' => $fields['filename'],
+            'url' => $fields['url'],
+            'user_id' => $fields['user_id'],
+        ]);
+
+        return response()->json(A9::auditLog($request, "A10::upload_secure", "success","successfully uploaded data"), 200);
+    }
+
+
 
 
 
     public function getStorage(Request $request){
-        $fields = $request->validate([
-            'user_id'=> 'required|integer'
-        ]);
-        $storage = A10_UserStorage::select('id', 'url', 'filename')->where('user_id', $fields['user_id'])->get();
-    
-        return $storage;
+        try{
+            $fields = $request->validate([
+                'user_id'=> 'required|integer'
+            ]);
+        } catch (ValidationException $e) {
+            return response()->json(A9::validationLog($e, $request, "getStorage"), 400);
+        }
+
+        A9::auditLog($request, "getStorage", "success","user access to the drive ");
+        return A10_UserStorage::select('id', 'url', 'filename')->where('user_id', $fields['user_id'])->get();
     }
+
+
+
 
 
     public function downloadFile(Request $request){
 
+        try{
+            $fields = $request->validate([
+                    'id'=> 'required|integer'
+            ]);
+        } catch (ValidationException $e) {
+            return response()->json(A9::validationLog($e, $request, "downloadFile"), 400);
+        }
 
-     $fields = $request->validate([
-            'id'=> 'required|integer'
-    ]);
-
-
-    $file = A10_UserStorage::select('url', 'filename')->where('id',$fields['id'])->first();
-    // Pobierz URL z żądania
-
-    // Pobierz nazwę pliku z URL
-    $filename = $file->filename;
-
-    $pathinfo = pathinfo($file->url);
-    $extension = $pathinfo['extension'];
-
-    // Pobierz zawartość pliku za pomocą metody file_get_contents()
-    $fileContents = file_get_contents($file->url);
-
-    // Ustaw nagłówki odpowiedzi, aby przeglądarka wiedziała, że ma pobrać plik
-    $headers = [
-        'Content-Type' => 'application/octet-stream',
-        'Content-Disposition' => 'attachment; filename="' . $filename.".".$extension. '"',
-
-    ];
-
-    // Zwróć odpowiedź z zawartością pliku i nagłówkami
-    return response()->make($fileContents, 200, $headers);
-}
-
+        $file = A10_UserStorage::select('url', 'filename')->where('id',$fields['id'])->first();
+        $filename = $file->filename;
+        $fileContents = file_get_contents($file->url);
+        
+        A9::auditLog($request, "downloadFile", "success","successfully downloaded data");
+        
+        return response()->json([
+            'fileName' => $filename,
+            'fileContents' => base64_encode($fileContents),
+        ]);
+    }
 }

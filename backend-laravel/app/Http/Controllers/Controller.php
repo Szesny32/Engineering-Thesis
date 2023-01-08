@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\A1_Session;
 use App\Models\A1_User;
 use App\Models\A2_Password_Dictionary;
@@ -9,6 +8,7 @@ use App\Models\Vulnerability;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Illuminate\Validation\ValidationException;
 
 class Controller extends BaseController
 {
@@ -16,8 +16,6 @@ class Controller extends BaseController
     {
         return Vulnerability::orderBy('id')->get();
     }
-
-
 
 
     public function dictionary(){

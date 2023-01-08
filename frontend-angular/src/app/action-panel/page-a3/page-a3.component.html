@@ -44,20 +44,15 @@
         </app-a3-login-form>
         </td>
     </tr>
-
     <tr>
         <app-a1-users-list 
             [id]="user.id"
             [users]="users">
         </app-a1-users-list>
     </tr>
-
     <tr>
-
-            <td *ngIf="(user==null || user.id==0) && selectedLevel == 0">Please enter password ('OR 1=1;-- )</td>
-            <td *ngIf="(user==null || user.id==0) && selectedLevel != 0">Please enter password </td>
-            <td *ngIf="(user!=null && user.id!=0)">Welcome {{user.login}} | {{user.email}}</td>
- 
-    
+        <td *ngIf="(user==null || user.id==0) && selectedLevel == 0">Please enter password ('OR 1=1;-- )</td>
+        <td *ngIf="(user==null || user.id==0) && selectedLevel != 0">Please enter password </td>
+        <td *ngIf="(user!=null && user.id!=0)">Welcome {{user.login}} | {{user.email}}</td>
     </tr>
 </table>

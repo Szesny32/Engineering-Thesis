@@ -1,1 +1,51 @@
-dziennik
+exceptionLogs
+<table>
+    <tr>
+        <td>id</td>
+        <td>IP</td>
+        <td>action</td>
+        <td>paramters</td>
+        <td>exception type</td>
+        <td>description</td>
+        <td>stack trace</td>
+        <td>created at</td>
+        <td>updated at</td>
+
+    </tr>
+    <tr *ngFor="let log of exceptionLogs">
+        <td>{{log.id}}</td>
+        <td>{{log.ip}}</td>
+        <td>{{log.action}}</td>
+        <td> <button title={{log.parameters}}>+</button></td>
+        <td>{{log.exception_type}}</td>
+        <td>{{log.description}}</td>
+        <td> <button title={{log.stack_trace}}>+</button></td>
+        <td>{{log.created_at}}</td>
+        <td>{{log.updated_at}}</td>
+    </tr>
+</table>
+
+<br><br><br>
+AuditLog
+<table>
+    <tr>
+        <td>id</td>
+        <td>IP</td>
+        <td>action</td>
+        <td>paramters</td>
+        <td>event type</td>
+        <td>description</td>
+        <td>created at</td>
+        <td>updated at</td>
+    </tr>
+    <tr *ngFor="let log of auditLogs">
+        <td>{{log.id}}</td>
+        <td>{{log.ip}}</td>
+        <td>{{log.action}}</td>
+        <td> <button title={{log.parameters}}>+</button></td>
+        <td>{{log.event_type}}</td>
+        <td>{{log.description}}</td>
+        <td>{{log.created_at}}</td>
+        <td>{{log.updated_at}}</td>
+    </tr>
+</table>
