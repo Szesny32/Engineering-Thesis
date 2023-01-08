@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { A9Service } from 'src/app/services/a9.service';
-
+import { FilterByPipe } from 'src/app/filter-by.pipe';
 @Component({
   selector: 'app-page-a9',
   templateUrl: './page-a9.component.html',
@@ -17,6 +17,9 @@ export class PageA9Component implements OnInit {
   exceptionLogs: ExceptionLog[] = [];
   auditLogs: AuditLog[] = [];
   
+
+  exclude: string = "success";
+
   selectedLevel:number = 0;
   setDialog(page: number){
     this.selectedLevel = page;

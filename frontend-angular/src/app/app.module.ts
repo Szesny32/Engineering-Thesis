@@ -38,6 +38,7 @@ import { VerifyResourceComponent } from './action-panel/page-a8/verify-resource/
 import { DigitalSignVerifyComponent } from './action-panel/page-a8/digital-sign-verify/digital-sign-verify.component';
 import { UserProfileComponent } from './action-panel/page-a4/user-profile/user-profile.component';
 import { PasswordChangeFormComponent } from './action-panel/page-a4/password-change-form/password-change-form.component';
+import { FilterByPipe } from './filter-by.pipe';
 
 @NgModule({
   declarations: [
@@ -74,7 +75,8 @@ import { PasswordChangeFormComponent } from './action-panel/page-a4/password-cha
     VerifyResourceComponent,
     DigitalSignVerifyComponent,
     UserProfileComponent,
-    PasswordChangeFormComponent
+    PasswordChangeFormComponent,
+    FilterByPipe
   ],
   imports: [
     BrowserModule,
