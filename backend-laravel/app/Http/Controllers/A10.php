@@ -91,10 +91,10 @@ class A10 extends Controller
                 'user_id'=> 'required|integer'
             ]);
         } catch (ValidationException $e) {
-            return response()->json(A9::validationLog($e, $request, "getStorage"), 400);
+            return response()->json(A9::validationLog($e, $request, "A10::getStorage"), 400);
         }
 
-        A9::auditLog($request, "getStorage", "success","user access to the drive ");
+        A9::auditLog($request, "A10::getStorage", "success","user access to the drive ");
         return A10_UserStorage::select('id', 'url', 'filename')->where('user_id', $fields['user_id'])->get();
     }
 
@@ -109,14 +109,14 @@ class A10 extends Controller
                     'id'=> 'required|integer'
             ]);
         } catch (ValidationException $e) {
-            return response()->json(A9::validationLog($e, $request, "downloadFile"), 400);
+            return response()->json(A9::validationLog($e, $request, "A10::downloadFile"), 400);
         }
 
         $file = A10_UserStorage::select('url', 'filename')->where('id',$fields['id'])->first();
         $filename = $file->filename;
         $fileContents = file_get_contents($file->url);
         
-        A9::auditLog($request, "downloadFile", "success","successfully downloaded data");
+        A9::auditLog($request, "A10::downloadFile", "success","successfully downloaded data");
         
         return response()->json([
             'fileName' => $filename,

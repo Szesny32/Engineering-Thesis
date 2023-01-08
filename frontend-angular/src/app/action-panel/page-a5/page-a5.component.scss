@@ -1,0 +1,114 @@
+.IDE{
+    background-color: rgb(66, 63, 63);
+}
+
+.fill{
+    height: 15px;
+}
+
+.menu {
+    background-color: rgb(32, 33, 36);
+    padding: 0px;
+    table {
+      padding: 0px;
+      text-align: right;
+      td {
+        padding: 0px;
+        border: 0px;
+        float: right;
+        .menu-item {
+            background-color: rgb(32, 33, 36);
+          color: rgb(180, 180, 180);
+          display: block;
+          width: 200px;
+          height: 50px;
+          font-size: 24px;
+          font-weight: bold;
+          border: none;
+        }
+
+        .menu-item:hover {
+          background-color: rgb(40, 40, 40);
+        }
+
+        .menu-item-selected {
+            background-color: rgb(32, 33, 36);
+          color: rgb(45, 255, 55);
+          display: block;
+          width: 200px;
+          height: 50px;
+        }
+
+        .menu-item-selected-bad {
+            background-color: rgb(32, 33, 36);
+          color: rgb(235, 14, 14);
+          display: block;
+          width: 200px;
+          height: 50px;
+        }
+      }
+    }
+  }
+
+
+  .fileTree{
+    background-color: rgb(32, 33, 36);
+    height: 500px;
+  }
+
+  .code_section{
+    background-color: rgb(32, 33, 36);
+    margin-top: 25px;
+    margin-bottom: 25px;
+    width: 1600px;
+    height: 500px;
+    text-align: left;
+    font-size: 24px;
+    overflow-y: scroll;
+    p{
+        font-size: 26px;
+        display: inline-block;
+
+    }
+  }
+
+  .terminal {
+
+    height: 100px;
+    
+    padding: 10px;
+
+    border-right: none;
+    background-color: rgb(32, 33, 36);
+    overflow-y: scroll;
+
+    color: white;
+
+    font-family: 'Courier New', Courier, monospace;
+}
+
+
+.mini-menu {
+    background-color: rgb(19, 19, 20);
+    padding: 0px;
+    border: 0px;
+    table {
+      padding: 0px;
+      text-align: right;
+      border: 0px;
+      td {
+        padding: 0px;
+        border: 0px;
+        float: right;
+        border: 0px;
+        .menu-item-selected {
+
+            background-color: rgb(32, 33, 36);
+          color: rgb(45, 255, 55);
+          display: block;
+          width: 200px;
+          height: 50px;
+        }
+      }
+    }
+  }

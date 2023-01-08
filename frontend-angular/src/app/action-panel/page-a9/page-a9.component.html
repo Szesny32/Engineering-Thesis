@@ -16,7 +16,9 @@ exceptionLogs
         <td>{{log.id}}</td>
         <td>{{log.ip}}</td>
         <td>{{log.action}}</td>
-        <td> <button title={{log.parameters}}>+</button></td>
+        <td> 
+            <button *ngIf="log.parameters.length>0" title={{log.parameters}}>+</button>
+        </td>
         <td>{{log.exception_type}}</td>
         <td>{{log.description}}</td>
         <td> <button title={{log.stack_trace}}>+</button></td>
@@ -42,7 +44,7 @@ AuditLog
         <td>{{log.id}}</td>
         <td>{{log.ip}}</td>
         <td>{{log.action}}</td>
-        <td> <button title={{log.parameters}}>+</button></td>
+        <td> <button *ngIf="log.parameters.length>0" title={{log.parameters}}>+</button></td>
         <td>{{log.event_type}}</td>
         <td>{{log.description}}</td>
         <td>{{log.created_at}}</td>

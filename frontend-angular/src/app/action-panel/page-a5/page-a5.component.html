@@ -1,10 +1,104 @@
-1. 
-hard coded pasy
-połączenie z bazą danych 
- -> github
+<div class="assistantPanel">
+    <div class="dialog">
+        <!---->
+        <div *ngIf="selectedLevel==0">
+            <div class="text">base64</div>
+        </div>
+        <!---->
+        <div *ngIf="selectedLevel==1">
+            <div class="text">sha-256</div>
+        </div>
+    </div>
+    <!---->
+    <div class="rightPanel">
+        <div class="assistant">
+            <img src="/assets/images/ass2.png">
+        </div>
+        <div class="menu">
+            <button *ngFor="let number of [0,1]; let i = index"
+                [ngClass]="i==selectedLevel? 'circleSet' : 'circle'" (click)="setDialog(i)"></button>
+        </div>
+    </div>
+</div>
+<div class="IDE">
+    <div class="fill"> </div>
+    <div class="menu">
+        <table>
+            <tr>
+                <td></td>
+                <td><button class="menu-item" [class]="runOp === 1 ? 'menu-item-selected' : 'menu-item'" (click)="runTab()"  *ngIf="runOp == 1 || runOp == 0">Run</button></td>
+                <td><button class="menu-item menu-item-selected-bad"  (click)="runTab()"  *ngIf="runOp == 2">Run</button></td>
+                <td><button class="menu-item" [class]="configOp === 1 ? 'menu-item-selected' : 'menu-item'" (click)="configTab()">Configuration</button></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+    <table>
+        <tr>
+            <td style ="width: 100%;">
+                <div class="fileTree"></div>
+            </td>
+            <td style>
+                    <div class ="code_section" *ngIf="selectedLevel==0 && configOp!=1">
+                        <br>
+                        @Configuration<br>
+                        public class SpringJdbcConfig {{"{"}}<br>
+                        &nbsp;&nbsp;@Bean<br>
+                        &nbsp;&nbsp;public DataSource mysqlDataSource() {{"{"}}<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;DriverManagerDataSource dataSource = new DriverManagerDataSource();<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;dataSource.setDriverClassName("com.mysql.jdbc.Driver");<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;dataSource.setUrl("<input class="code" [(ngModel)]="conn.url" style="width: 500px; font-size: 26px">");<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;dataSource.setUsername("<input class="code" [(ngModel)]="conn.username" style="width: 500px; font-size: 26px">");<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;dataSource.setPassword("<input class="code" [(ngModel)]="conn.passwd" style="width: 500px; font-size: 26px">");<br>
+                        <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;return dataSource;<br>
+                        &nbsp;&nbsp;{{"}"}}<br>
+                        {{"}"}}<br>
+                    </div>  
+                    <div class ="code_section" *ngIf="selectedLevel==1 && configOp!=1">
+                        <br>
+                        @Configuration<br>
+                        public class SpringJdbcConfig {{"{"}}<br>
+                        &nbsp;&nbsp;@Bean<br>
+                        &nbsp;&nbsp;public DataSource mysqlDataSource() {{"{"}}<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;DriverManagerDataSource dataSource = new DriverManagerDataSource();<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;dataSource.setDriverClassName("com.mysql.jdbc.Driver");<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;dataSource.setUrl(<p style="color:orange">System.getenv("DB_HOST")</p>);<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;dataSource.setUsername(<p style="color:orange">System.getenv("DB_USERNAME")</p>);<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;dataSource.setPassword(<p style="color:orange">System.getenv("DB_PASSWORD")</p>);<br>
+                        <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;return dataSource;<br>
+                        &nbsp;&nbsp;{{"}"}}<br>
+                        {{"}"}}<br>
+                    </div>
+                    <div class ="code_section" *ngIf="configOp==1">
+                        <br>
+                        Environment variables:<br>
+                        <table>
+                            <tr *ngFor="let env of envs">
+                                <td> {{env.variable}}</td>
+                                <td>  <input class="code" [(ngModel)]="env.value" style="width: 500px; font-size: 26px"></td>
+                            </tr>
+                        </table>
+                    </div>    
+            </td>
+        </tr>
 
-environemtn lub ładowanie z pliku
 
-
-2.logi bez hasla
-wyciszanie
+        <tr>
+            <td style="width: 100%;" colspan="2">
+                <div class="mini-menu">
+                    <table>
+                        <tr>
+                            <td><button class="menu-item-selected">Terminal</button></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="terminal">
+                    <p>{{output}}</p>
+                </div>
+            </td>
+        </tr>
+    </table>
+    <div class="fill"> </div>
+</div>
