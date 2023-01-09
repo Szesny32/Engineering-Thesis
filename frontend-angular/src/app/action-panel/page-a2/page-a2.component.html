@@ -2,19 +2,47 @@
     <div class="dialog">
         <!---->
         <div *ngIf="selectedLevel==0">
-            <div class="text">Clear</div>
+            <div class="text">
+            Poziom bezpieczeństwa haseł jest bardzo ważny. Załóżmy nowy scenariusz, w którym pewien portal <br>
+            został zaatakowany. A jego baza danych klientów wyciekła. <br>
+            Po prawej stronie udostępniam Ci dane z takiego wycieku. <br>
+            Hasła zostały zapisane w formie  <b style="color:rgb(191, 230, 20);">plain textu</b>. Plain text to niezaszyfrowana forma danych.<br>
+            Sprawia, to że możesz łatwo ich użyć, aby zalogować się na konto dowolnego użytkownika z listy<br><br>
+            <b style="color:rgb(191, 230, 20); font-size: 24px;">Zaloguj się, aby przejść dalej.</b> 
+            </div>
         </div>
         <!---->
         <div *ngIf="selectedLevel==1">
-            <div class="text">base64</div>
+            <div class="text">
+                Rozwiązaniem tego problemu, nie jest zwyczajne szyfrowanie haseł.<br>
+                Rozważmy ten scenariusz jeszcze raz. Tym razem hasła zostały zakodowane w formie <b style="color:rgb(191, 230, 20);">Base64</b>.<br>
+                Format ten jest dość znany i łatwo rozpoznawalny. Wpisanie widocznego hasła nic nie da<br>
+                Jednakże hasło możesz odszyfrować, korzystając z dekodera (po prawej stronie).<br>
+            </div>
         </div>
         <!---->
         <div *ngIf="selectedLevel==2">
-            <div class="text">sha-256</div>
+            <div class="text">
+                Dobrym rozwiązaniem będzie zastosowanie <b style="color:rgb(191, 230, 20);">funkcji haszujących</b>. W ten sposób traci* się możliwość dekodowania hasła. <br>
+                Użytkownik przesyła hasło - wyznacz się z niego hash i porównuje z tym co jest na bazie danych<br>
+                Baza danych nie zna hasła użytkownika, ale tylko wynik operacji. Jest to świetne rozwiązanie, <br>
+                ponieważ w razie wycieku nie zostanie ujawnione hasło użytkownika. Przykładem takiej funkcji jest <b style="color:rgb(191, 230, 20);">SHA-256</b><br>
+                <br>
+                *Jednakże, część haseł w dalszym ciagu nie jest bezpieczna. Co prawda odszyfrowanie hasła nie jest możliwe, <br>
+                ale można zastosować <b style="color:rgb(191, 230, 20);">atak słownikowy</b>. Taki atak zbiera najczęściej stosowane hasła<br>
+                i przygotowywuje pary hasło-skrót. Jeżeli hasz pojawił się w wycieku, można poznać jego hasło. <br>
+                Poniżej przedstawiam ci słownik najczęściej stosowanych haseł. Spróuj wyszukać <b style="color:rgb(191, 230, 20);">Ctrl+F</b> hasze z bazy. 
+
+            </div>
         </div>
         <!---->
         <div *ngIf="selectedLevel==3">
-            <div class="text">salt+sha-256</div>
+            <div class="text">
+                Aby zabezpieczyć się przed takimi atakami stosuje się <b style="color:rgb(191, 230, 20);">"sól"</b>. Sól do randomizowany dodatek zniekształcający hasz. <br>
+                Jest on tworzony raz dla każdego użytkownika i jest dodawany do podawanego przez niego hasłą. W ten sposób funkcja haszująca<br>
+                zwraca inny wynik. Oznacza to, że nawet dwa takie same hasła bedą mieć różne hasze.<br>
+                Skutecznie odpiera to proste ataki słownikowe<br>
+            </div>
         </div>
     </div>
     <!---->
@@ -54,8 +82,8 @@
         </td>
     </tr> 
     <tr>
-        <td *ngIf="selectedLevel!=1" colspan="2" style => {{response}}</td>
-        <td *ngIf="selectedLevel==1" colspan="3" style => {{response}}</td>
+        <td *ngIf="selectedLevel!=1" colspan="2" style => <b style="color:rgb(187, 224, 18); font-size: 24px;">{{response}}</b></td>
+        <td *ngIf="selectedLevel==1" colspan="3" style => <b style="color:rgb(187, 224, 18); font-size: 24px;">{{response}}</b></td>
     </tr>
     <tr>
         <td *ngIf="selectedLevel==2 || selectedLevel==3" colspan="2">
