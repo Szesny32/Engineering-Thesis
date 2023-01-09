@@ -2,19 +2,35 @@
     <div class="dialog">
         <!---->
         <div *ngIf="selectedLevel==0">
-            <div class="text">JA CHCE TU JESZZE UNIONA - z produktami</div>
+            <div class="text"><b style="color:rgb(191, 230, 20);">SQL Injection</b> to bardzo ciekawy przypadek umożliwiający logiczną zmianę operacji.<br>
+                Jeżeli programista zbytnio zaufa danym pochodzącym od użytkownika (np. login i hasło) i stworzy takie zapytanie: 
+                <div class="code">
+                    $query = "SELECT * FROM users WHERE login='".$fields['login']."' AND passwd='".$fields['password']."'';"
+                </div> <br><br>
+                Możliwe jest, aby użytkownik podał składnie SQL zamiast hasła np."<b style="color:rgb(191, 230, 20);">'OR 1=1;-- </b>"<br>
+                Wtedy zapytanie zostanie zmodyfikowane i będzie wyglądać tak: <br>
+                <div class="code">
+                    SELECT * FROM users WHERE login='login'AND passwd=''OR 1=1;<b style="color:rgb(79, 80, 78);">-- ;</b>
+                </div> <br><br>
+                W ten sposób omijany jest proces identyfikacji użytkownika, ponieważ "<b style="color:rgb(191, 230, 20);">'OR 1=1</b>" powoduje, że wynik zawsze jest prawdą. <br>
+                W efekcie zwrócone zostaną wszystkie rekordy. Sekwencja "<b style="color:rgb(191, 230, 20);">;-- </b>" umożliwia zakomentowanie dalszej części zapytania. <br>
+                Wypróbuj "<b style="color:rgb(191, 230, 20);">'OR 1=1;-- </b>" - zauważ, że na końcu jest spacja. 
+</div>
         </div>
         <!---->
         <div *ngIf="selectedLevel==1">
-            <div class="text">base64</div>
-        </div>
-        <!---->
-        <div *ngIf="selectedLevel==2">
-            <div class="text">sha-256</div>
-        </div>
-        <!---->
-        <div *ngIf="selectedLevel==3">
-            <div class="text">salt+sha-256</div>
+            <div class="text">Aby zabezpieczyc sie przed wstrzykiwaniem kodu, należy przeprowadzić sanityzację danych pochodzących od użytkownika <br>
+                oraz parametryzację zapytań. Przykładowa sanityzacja w jezyku PHP wygląda następująco: <br>
+                <div class="code">
+                    $fields['login'] = htmlentities($fields['login'], ENT_QUOTOES, "UTF-8)"<br>
+                    $fields['password'] = htmlentities($fields['password'], ENT_QUOTOES, "UTF-8)"<br> 
+                    $query = sprintf("SELECT * FROM users WHERE login = '%s' AND passwd ='%s'", <br> 
+                    mysqli_real_escape_string($connection, $fields['login']),<br> 
+                    mysqli_real_escape_string($connection, $fields['password']))
+                </div> <br><br>
+                Możesz przetestować działanie zabezpieczonego formularza.
+            </div>
+
         </div>
     </div>
     <!---->
@@ -23,7 +39,7 @@
             <img src="/assets/images/ass2.png">
         </div>
         <div class="menu">
-            <button *ngFor="let number of [0,1,2,3]; let i = index"
+            <button *ngFor="let number of [0,1]; let i = index"
                 [ngClass]="i==selectedLevel? 'circleSet' : 'circle'" (click)="setDialog(i)"></button>
         </div>
     </div>
