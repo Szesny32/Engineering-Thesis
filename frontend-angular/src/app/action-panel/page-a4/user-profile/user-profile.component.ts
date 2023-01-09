@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-user-profile',
@@ -9,7 +9,7 @@ export class UserProfileComponent implements OnInit {
 
   constructor() { }
 
-  selectedPage:number = 1;
+  @Input() selectedPage:number;
 
   userActivities: Hobby[]=[
     {

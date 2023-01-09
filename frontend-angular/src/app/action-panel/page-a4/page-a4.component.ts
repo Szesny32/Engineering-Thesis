@@ -10,6 +10,16 @@ export class PageA4Component implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
+  setPage(page:number){
+  
+      this.selectedPage= page ;
+  
+  }
+  selectedPage:number = 1;
+
+  
+  
 }

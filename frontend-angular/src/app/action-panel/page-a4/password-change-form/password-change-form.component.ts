@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-password-change-form',
@@ -9,7 +9,7 @@ export class PasswordChangeFormComponent implements OnInit {
 
   constructor() { }
   selectedLevel: number = 0;
-
+  @Output() changePage = new EventEmitter<number>(); 
   name: string = "";
   surname: string ="";
   date: string = ""
@@ -51,7 +51,9 @@ export class PasswordChangeFormComponent implements OnInit {
       await this.delay(50);
       this.date+=date.charAt(i);
     }
-      
+
+    await this.delay(150)
+    this.changePage.emit(2);
     let birthplace: string= "Dunkeld";
     for (var i = 0; i < birthplace.length; i++) {
       await this.delay(50);
@@ -63,13 +65,15 @@ export class PasswordChangeFormComponent implements OnInit {
       await this.delay(50);
       this.answer1+=answer1.charAt(i);
     }
-
+    await this.delay(150)
+    this.changePage.emit(3);
     let answer2: string = "Rebecca";
     for (var i = 0; i < answer2.length; i++) {
       await this.delay(50);
       this.answer2+=answer2.charAt(i);
     }
-
+    await this.delay(150)
+    this.changePage.emit(1);
     let answer3: string = "Terror";
     for (var i = 0; i < answer3.length; i++) {
       await this.delay(50);
