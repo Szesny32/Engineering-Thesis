@@ -35,14 +35,24 @@ export class PageA7Component implements OnInit {
     
   }
 
-
-
-
-
-
   ngOnInit(): void {
-    this.generatePin();
+    //this.generatePin();
+    this.autoPresentation();
+
   }
+
+
+async autoPresentation(){
+  await this.delay(5000);
+  for(let i = 4; i<=8 ; i++){
+    this._n = i;
+    this.generatePin();
+    await this.attackPin();
+   await this.delay(2000);
+  }
+
+}
+
 
   type(op: number) {
     this.status=0;
