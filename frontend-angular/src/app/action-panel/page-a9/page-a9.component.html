@@ -2,15 +2,34 @@
     <div class="dialog">
         <!---->
         <div *ngIf="selectedLevel==0">
-            <div class="text">base64</div>
+            <div class="text">
+                Jeśli ktoś będzie próbował, wykonywać jakieś nieporzadane czynności lub sam system<Br>
+                zacznie powodować konfilkty skąd będziesz wiedział co się stało?<br><br>
+                Monitorowanie zdarzeń w systemie to naprawdę ważna sprawa - na ich podstawie możesz pozyskać cenne dane.<br>
+                W poniższe logach możemy odczytać miejsce, z którego zostały wywołane oraz typ zdarzenia.<br>
+                Jednak takie logi są bezwartościowe, ponieważ nie możemy odpowiedzieć na pytania: <br><br>
+                <b style="color:rgb(191, 230, 20);">Co się dokładnie stało?</b><br><br>
+                <b style="color:rgb(191, 230, 20);">Jakie parametry podał użytkownik?</b>
+            </div>
         </div>
         <!---->
         <div *ngIf="selectedLevel==1">
-            <div class="text">sha-256</div>
+            <div class="text">
+                Trochę lepiej nieprawda? Jednak to wciąż za mało: <br><br>
+                <b style="color:rgb(191, 230, 20);">Skąd nastąpiło zapytanie/atak?</b><br><br>
+                <b style="color:rgb(191, 230, 20);">Kiedy to sie wydarzyło?</b>
+            </div>
         </div>
         <!---->
         <div *ngIf="selectedLevel==2">
-            <div class="text">sha-256</div>
+            <div class="text">
+                Pełne logi są w stanie przybliczyć powód wydarzenia. Można je poddać analizie w razie wystąpienia ataku cybernetycznego.<br><br>
+                Logi mogą zostać wykorzystane również do zaimplementowania mechanizmów o których wspominano w wcześniejszych tematach. <br><br>
+                Informacja o nieudanych próbach logowania oraz dacie można zostać wykorzystana do stworzenia mechanizmu <br>
+                blokującego ip na pewien okres czasu<br>
+
+
+            </div>
         </div>
     </div>
     <!---->
