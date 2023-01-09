@@ -43,12 +43,12 @@ export class PageA7Component implements OnInit {
 
 
 async autoPresentation(){
-  await this.delay(5000);
+  await this.delay(2000);
   for(let i = 4; i<=8 ; i++){
     this._n = i;
     this.generatePin();
     await this.attackPin();
-   await this.delay(2000);
+   await this.delay(4000);
   }
 
 }

@@ -30,7 +30,7 @@ export class PasswordChangeFormComponent implements OnInit {
 
 
   async typeAll(){
-    await this.delay(50)
+    await this.delay(2000);
 
   
 
@@ -52,8 +52,9 @@ export class PasswordChangeFormComponent implements OnInit {
       this.date+=date.charAt(i);
     }
 
-    await this.delay(150)
+    await this.delay(500)
     this.changePage.emit(2);
+    await this.delay(500)
     let birthplace: string= "Dunkeld";
     for (var i = 0; i < birthplace.length; i++) {
       await this.delay(50);
@@ -65,15 +66,17 @@ export class PasswordChangeFormComponent implements OnInit {
       await this.delay(50);
       this.answer1+=answer1.charAt(i);
     }
-    await this.delay(150)
+    await this.delay(500)
     this.changePage.emit(3);
+    await this.delay(500)
     let answer2: string = "Rebecca";
     for (var i = 0; i < answer2.length; i++) {
       await this.delay(50);
       this.answer2+=answer2.charAt(i);
     }
-    await this.delay(150)
+    await this.delay(500)
     this.changePage.emit(1);
+    await this.delay(500)
     let answer3: string = "Terror";
     for (var i = 0; i < answer3.length; i++) {
       await this.delay(50);
