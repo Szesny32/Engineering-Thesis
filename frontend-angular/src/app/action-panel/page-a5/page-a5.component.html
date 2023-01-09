@@ -2,11 +2,23 @@
     <div class="dialog">
         <!---->
         <div *ngIf="selectedLevel==0">
-            <div class="text">base64</div>
+            <div class="text">
+                Podczas tworzenia oprogramowania backendowego, często potrzebne są funkcjonalności np. łączenia z bazą danych.<br>
+                Wtedy potrzebne są dane do stworzenia komunikacji takie jak login, hasło czy adres.<br>
+                Takie informacje nie powinny znaleźć się w kodzie. Jeżeli ktoś uzyska dostęp do kodu źródłowego<br>
+                np. na zdalnym <b style="color:rgb(191, 230, 20);">repozytorium Git</b><br>
+                będzie wstanie uzyskać dostęp do bazy za pomocą danych dostępowych które sie w nim znalazły. <br>
+            </div>
         </div>
         <!---->
         <div *ngIf="selectedLevel==1">
-            <div class="text">sha-256</div>
+            <div class="text">
+                Aby temu zapobiec, hasła można należy wczytywać z zmiennych środowiskowych (lub z plików).<br>
+                Ponizej przedstawiono przykład dla projektu <b style="color:rgb(191, 230, 20);">Java</b> w <b style="color:rgb(191, 230, 20);">IntellIj </b> <br>
+                W zakładce <b style="color:rgb(191, 230, 20);">Configuration</b> możesz zobaczyć, że zostały ustawione zmienne. <br>
+                Te zmienne są pobierane w momencie uruchomienia metody. W ten sposób, dane logowania nie trafią do zdalnego rezozytorium.
+
+            </div>
         </div>
     </div>
     <!---->
