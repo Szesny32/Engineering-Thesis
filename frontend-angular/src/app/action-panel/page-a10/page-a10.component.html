@@ -2,11 +2,34 @@
     <div class="dialog">
         <!---->
         <div *ngIf="selectedLevel==0">
-            <div class="text">base64</div>
+            <div class="text">
+                <b style="color:rgb(191, 230, 20);">SSRF</b> to rodzaj ataku umożliwiający dostęp do wewnętrznych zasobów lub skanowania portów <br>
+                poprzez odpowienidną modyfikację adresu URL. Załóżmy scenariusz, w którym pewien serwis umożliwia umieszczanie linków do plików.<br><br>
+                W normalnym działaniu użytkownik podaje link do prawidłowego zasobu, ale co sie stanie jeśli podasz link do pliku znajdującego się na serwerze?<br><br>
+                Spróbuj wrzucić adres <div class="code">C:/Users/Szesny/Desktop/etc/passwd.txt</div>, a następnie pobrać. <br><br><br>
+                Jeżli wykonałeś powyższą funkcjępowinno udać ci, się uzyskać dostęp do pliku znajdującego się na serwerze. <br><br><br>
+                <b style="color:rgb(191, 230, 20);">Jak to było możliwe?</b><br>
+                1. Zawiodła konfiguracja dostępu do plików serwera.<br>
+                2. Kod nie sprawdził poprawności adres URL.
+
+            </div>
         </div>
         <!---->
         <div *ngIf="selectedLevel==1">
-            <div class="text">sha-256</div>
+            <div class="text">
+                    Aby zabezpieczyć sie przed takimi ataki należy zwalidować adres url np. używając wyrażeń regularnych<br><br>
+
+                <div class="code"> 
+                    isValidUrl(url: string): boolean {{"{"}} <br>
+                    const urlRegex = /^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/;<br>
+                    return urlRegex.test(url);<br>
+                    {{"}"}}
+                </div> <br>
+                Spróbuj ponownie używając <div class="code">C:/Users/Szesny/Desktop/etc/passwd.txt</div> <br><br>
+                W konsoli <b style="color:rgb(191, 230, 20);">"(F12)"</b> możesz sprawdzić, że serwer odesłał odpowiedź: <b style="color:rgb(209, 48, 19);">"Invalid URL"</b>
+
+
+            </div>
         </div>
     </div>
     <!---->
