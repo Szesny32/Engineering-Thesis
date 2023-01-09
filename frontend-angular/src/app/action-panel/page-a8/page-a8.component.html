@@ -2,11 +2,25 @@
     <div class="dialog">
         <!---->
         <div *ngIf="selectedLevel==0">
-            <div class="text">base64</div>
+            <div class="text">
+                Ważnym aspektem bezpieczeństwa są aspekty integralności danych. Skąd mieć pewność, że oprogramowanie czy dane<br>
+                pobrane z zewnętrznych źródeł jest oryginalne? Warto rozważyć stosowanie podpisów cyfrowych w wszystkich wymaganych procesach<br><br>
+                Aby stworzyć  <b style="color:rgb(191, 230, 20);">cyfrowy podpis </b> wykorzystuje się klucze prywatne oraz publiczne.<br>
+                Aby utworzyć potrzebne klucze oraz sam podpis można skorzystać z bilblioteki <b style="color:rgb(191, 230, 20);">openssl</b> oraz <br>
+                funkcji: <b style="color:rgb(191, 230, 20);">openssl_pkey_new</b>, <b style="color:rgb(191, 230, 20);">openssl_sign</b>, <b style="color:rgb(191, 230, 20);">openssl_verify</b><br><br>
+                W etapie podpisywania potrzebny jest <b style="color:rgb(191, 230, 20);">klucz prywatny</b>, który musi pozostać tajny (nie może zostać rozpowszechniony). 
+                Poniżej przedstawiam Ci taki mechanizm. Spróbuj stworzyć i podpisać wiadomość.
+            </div>
         </div>
         <!---->
         <div *ngIf="selectedLevel==1">
-            <div class="text">sha-256</div>
+            <div class="text">
+                Twoja wiadomość została podpisana. Aby zweryfikować wiadomość i podpis możesz wykorzystać <br>
+                teraz <b style="color:rgb(191, 230, 20);">klucz publiczny </b>powiązany z prywatnym (tworzy sie automatycznie podczas generowania klucza prywatnego).<br>
+                Pamietaj, aby klucz prywatny pozostał utajniony, i nikomu go nie zdradzaj. Udostępnić natomiast musisz klucz publiczny. <br><br>
+                
+                Możesz teraz sprawdzić co sie stanie, gdy zmienisz treść wiadomości. <br>
+            </div>
         </div>
     </div>
     <!---->
@@ -58,7 +72,9 @@
         </tr>
     </table>
 </div>
-{{response}}
 
-{{signConfirmation.signatureIsValid}}
+<div *ngIf="selectedLevel==1">
+    {{signConfirmation.signatureIsValid}}
+</div>
+{{response}}
 <br>

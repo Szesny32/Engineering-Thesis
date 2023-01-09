@@ -15,6 +15,7 @@ export class DigitalSignVerifyComponent implements OnInit {
   @Output() requestEmitter = new EventEmitter<{ public_key: string, signature: string }>();
 
   ngOnInit(): void {
+  
   }
 
   checkSign(){
