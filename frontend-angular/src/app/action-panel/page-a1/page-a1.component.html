@@ -4,20 +4,52 @@
         <div *ngIf="selectedLevel==0">
             <div class="text">
                 <p style="font-size: 20px"> Broken Access Control to rodzina błędów związanych z błędami autoryzacji.<br>
-                Załóżmy, że portal X posiada, w ustawieniach użytkownika, opcję do zmiany hasła.<br>
-                Poniżej stworzyłem dla Ciebie taki formularz. Dodatkowo, wyświetlę Ci również <br>
-                aktualny stan fragmentu bazy danych.<br><br></p>
-                <b style="color:rgb(40, 230, 255); font-size: 24px;">Zmień hasło, aby przejść dalej</b> 
+                    Brak autoryzacji umożliwa użytkownikowi wykonywanie operacji nie przeznaczonych dla niego. <br>
+
+                    Poniżej stworzyłem dla Ciebie taki scenariusz.<br>
+                    Pewien portal posiada, w ustawieniach użytkownika,  opcję do zmiany hasła.<br>
+                    Zupełnie taki jak przedstawiam Ci po lewej stronie.<br>
+                    Po prawej wyświetlę Ci fragment przedstawiający stan bazy danych.<br>
+                    Aktualnie zalogowanym użytkownikiem jest Harrel. <br>
+                    Skorzystaj z formularza, i zmień swoje hasło<br> 
+
+                <b style="color:rgb(191, 230, 20); font-size: 24px;">Zmień hasło, aby przejść dalej</b> 
                 
             </div>
         </div>
         <!---->
         <div *ngIf="selectedLevel==1">
-            <div class="text">Postman</div>
+            <div class="text">
+                Udało Ci się zmienić hasło użytkownika, ale co jeśli powiem Ci <br>
+                że mogłeś zmienić hasło dowolnego użytkownika? <br>
+                Aktualne zapytanie po stronie serwera przyjmuje tylko parametr ID oraz wprowadzone hasło:<br>
+                <div class="code">$user = A1_User::where('id', $fields['id'])<br>
+                    ->update(['passwd' => $fields['passwd']]);
+                </div> <br>
+                Nie widziałeś tego, ale formularz wysyła również ID zalogowanego użytkownika.<br>
+                Możesz dowolnie zmodyfikować parametry zapytania używając specjalnych narzędzi tp. takich jak  
+                <b style="color:rgb(191, 230, 20)">Postman</b>  czy <b style="color:rgb(191, 230, 20)">Burp Suit</b>.
+                Jednak dla zaoszczędzenia Ci czasu zasymuluje takie narzędzie po lewej stronie. <br>
+                <b style="color:rgb(191, 230, 20);">Spróbuj zmienić kilka haseł.</b>      
+            </div>
         </div>
         <!---->
         <div *ngIf="selectedLevel==2">
-            <div class="text">Postman - secured</div>
+            <div class="text">
+                Jak widzisz, zmieniłeś hasła dowolnych użytkowników - nie powinno to być możliwe<br>
+                Sesja jest specjalnym tokenem, który można wykorzystać, aby temuzapobiec. <br>
+                <div class="code">       $currentTimestamp = Carbon::now()->setTimezone('Europe/Warsaw')->toDateTimeString(); <br>
+                    $authorization = A1_Session::where('sessid', $fields['sessid']) <br>
+                        ->where('user_id', $fields['id']) <br>
+                        ->where('expire_at', '>', $currentTimestamp) <br>
+                        ->first(); <br>
+                </div> <br>
+                W powyższym rozwiązaniu, najpierw sprawdza się czy użytkownik ma dostęp do określonego zasobu. <br>
+                I tylko jeżeli ma, będzie mógł zamienić hasło<br>
+                Udostępniłem Ci jeszcze funkcję, przedłużania i wyczerpywania sesji, abyś mógł przestować jej działanie<br>
+                Spróbuj zmienić hasła jeszcze raz, a zobaczysz, że nie możesz juz tego zrobić.
+ 
+            </div>
         </div>
     </div>
     <!---->
@@ -61,7 +93,7 @@
         </td>
     </tr> 
     <tr>
-        <td colspan="2" style => {{response}}</td>
+        <td colspan="2" style => <b style="color:rgb(187, 224, 18); font-size: 24px;">{{response}}</b> </td>
     </tr>
 </table>
 
